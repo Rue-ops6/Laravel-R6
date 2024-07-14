@@ -13,6 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 #after 8000 from termiinal is uri -- after /public/ in xampp is uri. while the whole thing is url 'Uniform Resource Locator'.
 Route::get('r/gaming', function () { #'r/gaming' is the uri 'Uniform Resource Identifier' thus its an identifier can't be repeated twice.
     return "¡Hey Rue!";

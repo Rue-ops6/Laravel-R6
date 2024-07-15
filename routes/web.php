@@ -85,7 +85,7 @@ Route::prefix('company')->group(function () {
 
 
 
-                          #<!------Task-------¡>                              
+                          #<!------Task2-------¡>                              
     #1)
     Route::prefix("accounts")->group(function () {
     Route::get('', function () {
@@ -130,7 +130,7 @@ Route::prefix('company')->group(function () {
 
 
 
-
+                          #<!------view Html-------¡>                              
 
 Route::get('CV', function () {
     return view('CV');

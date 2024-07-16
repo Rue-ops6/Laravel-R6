@@ -184,10 +184,9 @@ Route::get('Wlc', function () {
                         /*Route::get('contactus', function () {
                         return view('contactus');
                         });*/
-                        #  Route::get('info', [ExampleController:: class, 'info']);  //using controller
-                        Route::post('info', function () {
-                        return "name" . "email" . "sub" . "msg";
-                        })->name('info');
+                        Route::post('info', [ExampleController::class, 'info'])->name('info'); 
+                        Route::get('result', [ExampleController::class, 'result'])->name('result'); 
+
 
 
 

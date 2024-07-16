@@ -33,30 +33,30 @@
             <form action="{{route('info')}}" method="POST">
             @csrf
             <!-- <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" /> --> <!--csrf field-->
-            <input type="hidden" name="info" value="<?php echo $info ?>">
+            <!-- <input type="hidden" name="info" value="<#?php echo $info ?>"> -->
             <div class="form-group mb-3 row">
                     <label for="" class="form-label col-md-2 fw-bold text-md-end">Name:</label>
                     <div class="col-md-10">
-                        <input type="text" placeholder="e.g. Jhon Doe" class="form-control py-2"   name="name"  value="<?php echo $info['name'] ?>"/>
+                        <input type="text" placeholder="e.g. Jhon Doe" class="form-control py-2"   name="name"/> <!--value="<#?php echo $info['name'] ?>"-->
                     </div>
                 </div>
                 <div class="form-group mb-3 row">
                     <label for="" class="form-label col-md-2 fw-bold text-md-end">Email:</label>
                     <div class="col-md-10">
-                        <input type="email" placeholder="e.g. example@example.com" class="form-control py-2"   name="email"  value="<?php echo $info['email'] ?>"/>
+                        <input type="email" placeholder="e.g. example@example.com" class="form-control py-2"   name="email"/>
                     </div>
                 </div>
                 <div class="form-group mb-3 row">
                     <label for="" class="form-label col-md-2 fw-bold text-md-end">Subject:</label>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Enter subject" class="form-control py-2"    name="sub"  value="<?php echo $info['sub'] ?>"/>
+                        <input type="text" placeholder="Enter subject" class="form-control py-2"    name="sub"/>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group mb-3 row">
                     <label for="" class="form-label col-12 fw-bold">Message:</label>
                     <div class="col-12">
-                        <textarea name="" id="" class="form-control" rows="8" style="padding: 0.7rem;"    name="msg"><?php echo $info['msg'] ?></textarea>
+                        <textarea id="" class="form-control" rows="8" style="padding: 0.7rem;"    name="msg"></textarea>
                     </div>
                 </div>
                 <div class="mb-3">

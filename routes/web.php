@@ -188,6 +188,7 @@ Route::get('Wlc', function () {
                         Route::get('result', [ExampleController::class, 'result'])->name('result'); 
 
 
+                        
 
 
 

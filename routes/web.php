@@ -1,17 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ExampleController; 
+use App\Http\Controllers\ExampleController;  #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
+
+Route::get('/', function () {  #main page
+    return view('welcome');
+});
+
 
 /*#comment it until the project is done as it hides errors and bring us to home 
 Route::fallback(function () {
     return redirect("/");
 });
+//anotherway
+Route::fallback(fn() => redirect(""));
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 #after 8000 from termiinal is uri -- after /public/ in xampp is uri. while the whole thing is url 'Uniform Resource Locator'.
@@ -73,7 +77,7 @@ company/users*/
 Route::prefix('company')->group(function () {
     Route::get('/', function () {
         return "Welcome Home";
-    });
+    })->name("Co.");
     Route::get('about', function () {
         return "About Co.";
     });
@@ -127,11 +131,67 @@ Route::prefix('company')->group(function () {
     });
   });
 });
-
-
+//another way but it is missing the if statment for everytype to write its return msg
+/*Route::prefix('cars')->group(function () {
+    Route::get('/', function () {
+        return "cars index";
+});
+Route::prefix('usa/{type}')->group(function ($type) {
+return "USA cars" . $type;
+})->whereIn('type',['ford','tesla']);
+Route::prefix('ger/{type}')->group(function ($type) {
+    return "German cars" . $type;
+    })->whereIn('type',['mercedes','audi','volkswagen']);
+});
+*/
 
                           #<!------view Html-------¡>                              
 
-Route::get('CV', function () {
-    return view('CV');
+Route::get('resume', function () {  #CV is a frontend file tht can be seen in laravel thru the engine "blade". we can find it in resources/views. Therefore it's called by only its name.
+    return view('resume');
 });
+//another static method but it won't be able to handle logic if we have it
+Route::view('resume', 'resume');
+
+
+Route::get('login', function () {
+    return view('login');
+});
+// Route::get('login', [ExampleController:: class, 'login']);  //using controller
+Route::post('sub', function () {
+    return "Data submitted";
+})->name('sub');
+
+
+
+//named route: anchor tag from page to another
+Route::get('link', function () { 
+    $url1 = route('Wlc');
+    $url2 = route('Co.'); //upwards around line 77
+    return "<a href='$url1'> go to welcome </a> <br> <a href='$url2'> go to page </a>";
+    #return "<a href='/Wlc'> go to welcome </a>";
+});
+Route::get('Wlc', function () { 
+    return "wlc to laravel";
+})->name('Wlc');
+
+
+
+
+                          #<!------Task3-------¡>                              
+
+                          Route::get('contactus', [ExampleController:: class, 'contactus']);  //using controller
+                        /*Route::get('contactus', function () {
+                        return view('contactus');
+                        });*/
+                        #  Route::get('info', [ExampleController:: class, 'info']);  //using controller
+                        Route::post('info', function () {
+                        return "name" . "email" . "sub" . "msg";
+                        })->name('info');
+
+
+
+
+
+
+

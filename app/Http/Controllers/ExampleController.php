@@ -9,14 +9,20 @@ class ExampleController extends Controller
     function login(){
         return view('login');
     } 
+    function log(Request $request){
+    dd($request->all());
+    return $request['email'] . '<br>' . $request->password;
+    }
 
 /*******************/
     function contactus() {
         return view('contactus');
     }//->where(["name" => "[A-Za-z]+"]);
 
+#facade //use Illuminate\Http\Request;
     public function info(Request $request){
-        $data = $request->all();
+        #dd(info);
+        $data = $request->all(); #$request; 
 
         session(['formData' => $data]);// Store the data in the session instead of the database nor cookies as there is no pwd n it's more secured
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;  #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
+use App\Http\Controllers\CarController;
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -158,6 +159,8 @@ Route::get('login', function () {
     return view('login');
 });
 // Route::get('login', [ExampleController:: class, 'login']);  //using controller
+Route::post('logged', [ExampleController::class,'log'])->name('signin');
+
 Route::post('sub', function () {
     return "Data submitted";
 })->name('sub');
@@ -190,9 +193,10 @@ Route::get('Wlc', function () {
 
 
 
-                          #<!------Controller-------¡>                              
+                          #<!------Car-------¡>                              
 
-
+                          Route::get('addcars', [CarController::class,'create'])->name('add');
+                          Route::post('carz', [CarController::class,'store'])->name('carz');
 
 
 

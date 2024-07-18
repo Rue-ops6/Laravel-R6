@@ -10,8 +10,9 @@ class ExampleController extends Controller
         return view('login');
     } 
     function log(Request $request){
-    dd($request->all());
     return $request['email'] . '<br>' . $request->password;
+    #return "Data submitted";
+        #dd($request->all()); #to request all will get us even the token and unwanted fields, thus its better to request each alone and for more info do a dd();
     }
 
 /*******************/

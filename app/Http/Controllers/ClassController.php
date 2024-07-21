@@ -43,7 +43,14 @@ class ClassController extends Controller
 
 
 
+/* elfk w tfasil str 'fulled' => isset($request->fulled):
 
+if(isset($request->fulled)){
+    $fulled = true;
+}else{
+    $fulled = false;    
+}
+l2n isset bs 4aila el values true w false keda keda*/
 $data = [
 'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.
 'capacity' => $request->capacity,

@@ -199,6 +199,9 @@ Route::get('Wlc', function () {
                           Route::get('addcars', [CarController::class,'create'])->name('add');
                           Route::post('carz', [CarController::class,'store'])->name('carz');
                           Route::get('carshome', [CarController::class,'index'])->name('cars');
+                          Route::get('carz/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::post('carz/{id}', [CarController::class,'update'])->name('cars.update');
+                          Route::get('carz/{id}/delete', [CarController::class,'destroy'])->name('cars.destroy');
 
                           #<!------Task4-------¡>                              
 

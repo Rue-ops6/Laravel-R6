@@ -74,7 +74,12 @@ $data = [
      */
     public function edit(string $id)
     {
-        //
+
+        $car=Car::findOrfail($id);
+        // dd($car);
+        return view('edit_car', compact ('car'));
+        // return  $car['id'];
+
     }
 
     /**

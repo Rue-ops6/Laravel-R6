@@ -31,6 +31,7 @@
               <th scope="col">Price</th>
               <th scope="col">Description</th>
               <th scope="col">Published</th>
+              <th scope="col">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -39,8 +40,9 @@
             <tr>
               <td scope="row">{{$car['carTitle']}}</td>
               <td>{{$car['price']}}</td>
-              <td>{{$car['description']}}</td>
-              <td>{{$car['pub']}}</td>
+              <td>{{Str::limit($car['description'], 20, ' ...')}}</td>
+              <td>{{($car['pub'] == 1) ? "yes" : "no"}}</td>
+              <td><a href="{{route("cars.edit", $car['id'])}}">Edit</a></td>
             </tr>
 @endforeach
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clazz extends Model
 {
     use HasFactory;
+    // protected $table = 'clazzs';
     protected $fillable = [
         'classTitle',
         'capacity',

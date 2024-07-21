@@ -198,6 +198,7 @@ Route::get('Wlc', function () {
 
                           Route::get('addcars', [CarController::class,'create'])->name('add');
                           Route::post('carz', [CarController::class,'store'])->name('carz');
+                          Route::get('carshome', [CarController::class,'index'])->name('cars');
 
                           #<!------Task4-------¡>                              
 

@@ -40,30 +40,21 @@ class ClassController extends Controller
         $endTime = '16:35:00';*/
 
                 // data from form
-        $title = 'classTitle';
-        $capacity = 'capacity';
-        $fulled = 'fulled';
-        $price = 'price';
-        $begTime = 'begTime';
-        $endTime = 'endTime';
 
-        $validatedData = $request->validate([
-            $title => 'required|string|max:100',
-            $capacity => 'required|integer',
-            $fulled => 'required|boolean',
-            $price => 'required|numeric',
-            $begTime => 'required|date_format:H:i',
-            $endTime => 'required|date_format:H:i',
-        ]);
+
+
+
+$data = [
+'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.
+'capacity' => $request->capacity,
+'fulled' => isset($request->fulled),
+'price' => $request->price,
+'begTime' => $request->begTime,
+'endTime' => $request->endTime,
+    ];
+
    
-        Clazz::create([
-            $title => $validatedData[$title],
-            $capacity => $validatedData[$capacity],
-            $fulled => $validatedData[$fulled],
-            $price => $validatedData[$price],
-            $begTime => $validatedData[$begTime],
-            $endTime => $validatedData[$endTime],
-        ]);
+        Clazz::create($data);
         return "Submitted successfully";
         //other way        return response()->json(['message' => 'Data stored successfully']);
    

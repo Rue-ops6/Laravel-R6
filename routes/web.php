@@ -203,3 +203,13 @@ Route::get('Wlc', function () {
 
                           Route::get('addclass', [ClassController::class,'create'])->name('add');
                           Route::post('clazz', [ClassController::class,'store'])->name('clazz');
+
+
+                          
+                          #<!------Validation?-------¡>                              
+
+                          #<!------Task5-------¡>                              
+
+
+
+

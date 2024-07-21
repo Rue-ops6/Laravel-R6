@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('classTitle', 100);
             $table->integer('capacity');
             $table->boolean('fulled');
-            $table->float('price');
-            
+            $table->decimal('price', 6, 3);  #the decimal type if you need precision, or float for less precision but more extensive range.
+            #Precision (6 in this case): The total number of digits that the number can store, including both the digits to the left and the right of the decimal point. While (3 in this case): The number of digits to the right of the decimal point.
             $table->time('begTime');
             $table->time('endTime');
 

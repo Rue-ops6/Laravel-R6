@@ -29,24 +29,43 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-
-        //dd($request);
-        $title ='maths';
+    
+        #dd($request);
+        // fixed data
+        /*$title ='maths';
         $capacity = '10';
         $fulled = true;
         $price ='190000';
         $begTime = '14:05:19';
-        $endTime = '16:35:00';
+        $endTime = '16:35:00';*/
+
+                // data from form
+        $title = 'classTitle';
+        $capacity = 'capacity';
+        $fulled = 'fulled';
+        $price = 'price';
+        $begTime = 'begTime';
+        $endTime = 'endTime';
+
+        $validatedData = $request->validate([
+            $title => 'required|string|max:100',
+            $capacity => 'required|integer',
+            $fulled => 'required|boolean',
+            $price => 'required|numeric',
+            $begTime => 'required|date_format:H:i',
+            $endTime => 'required|date_format:H:i',
+        ]);
    
         Clazz::create([
-           'classTitle'=> $title,
-           'capacity'=> $capacity,
-           'fulled'=> $fulled,
-           'price'=> $price,
-           'begTime'=> $begTime,
-           'endTime'=> $endTime,
+            $title => $validatedData[$title],
+            $capacity => $validatedData[$capacity],
+            $fulled => $validatedData[$fulled],
+            $price => $validatedData[$price],
+            $begTime => $validatedData[$begTime],
+            $endTime => $validatedData[$endTime],
         ]);
         return "Submitted successfully";
+        //other way        return response()->json(['message' => 'Data stored successfully']);
    
        }
 

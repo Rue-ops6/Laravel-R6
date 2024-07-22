@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="container my-5">
         <div class="bg-light p-5 rounded">
           <h2 class="fw-bold fs-2 mb-5 pb-2">Add Class</h2>
-          <form action="{{route('clazz')}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
+          <form action="{{route('classes')}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"
@@ -94,20 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"
-              >is fulled:</label
-              >
-              <div class="col-md-10">
-                <input
-                  type="checkbox"
-                  class="form-check-input    btn mt-4 btn-secondary"
-                  style="padding: 0.7rem;"
-                  name="fulled"
-                />
-              </div>
-            </div>
-            <hr>
-            <div class="form-group mb-3 row">
-              <label for="" class="form-label col-md-2 fw-bold text-md-end"
                 >Price:</label
               >
               <div class="col-md-10">
@@ -125,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 >Time:</label
               >
               <div class="col-md-10">
-                <label for="" class="form-label">From <input type="time" class="form-control" name="begTime" ></label> <!--type="time"    ¡do not wait for the cursor to change into the writing integrator-wise, just use the num-tab! + the up n down for AM & PM -->
+                <label for="" class="form-label">From <input type="time" class="form-control" name="begTime" {{ $info['begTime']->format('h : i A') }}></label> <!--{{$date = date_create($class['begTime'])}}; . {{date_format($date, "h : i A")}}; -->
 
  <!-- <$?php if (!Page.IsPostBack) {
   for (int begTime = 0; begTime < 24; begTime++) {
@@ -135,6 +121,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="" class="form-label">To <input type="time" class="form-control" name="endTime"></label> <!--type="time"    ¡do not wait for the cursor to change into the writing integrator-wise, just use the num-tab! + the up n down for AM & PM-->
               </div>
             </div>
+            <hr>
+            <div class="form-group mb-3 row">
+              <label for="" class="form-label col-md-2 fw-bold text-md-end"
+              >Is fulled:</label
+              >
+              <div class="col-md-10">
+                <input
+                  type="checkbox"
+                  class="form-check-input    btn mt-4 btn-secondary"
+                  style="padding: 0.7rem;"
+                  name="fulled"
+                />
+              </div>
+            </div>            
             <div class="text-md-end">
             <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
               Add Class

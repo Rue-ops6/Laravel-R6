@@ -27,14 +27,14 @@ Route::get('r/gaming', function () { #'r/gaming' is the uri 'Uniform Resource Id
 # we end writing by the r/gaming route. Unlike php there is no need to write the whole path. all the way up to r.php. Now hacker won't know what language are we using which is more secure.
 
 // to get a result even when there ain't no id
-Route::get('car/{id?}', function ($id = 0) {
+Route::get('kar/{id?}', function ($id = 0) {
     return "car no. is : " . $id;
 })->where([
     "id" => "[0-9]+",
 ]);
 //another way
-Route::get('classes/{id?}', function ($id = null) {
-    return "class no. is : " . $id;
+Route::get('clazzez/{id?}', function ($id = null) {
+    return "clazz no. is : " . $id;
 })->whereNumber("id");
 //
 Route::get('users/{name}/{age}', function ($name, $age) {
@@ -107,7 +107,7 @@ Route::prefix('company')->group(function () {
 
 
     #2)
-    Route::prefix("cars")->group(function () {
+    Route::prefix("kars")->group(function () {
     Route::get('', function () {
         return "Wlc Home";
     });
@@ -194,22 +194,28 @@ Route::get('Wlc', function () {
 
 
 
-                          #<!------Car-------¡>                              
+                          #<!------Cars-------¡>                              
 
                           Route::get('addcars', [CarController::class,'create'])->name('add');
-                          Route::post('carz', [CarController::class,'store'])->name('carz');
-                          Route::get('carshome', [CarController::class,'index'])->name('cars');
-                          Route::get('carz/{id}', [CarController::class,'edit'])->name('cars.edit');
-                          Route::post('carz/{id}', [CarController::class,'update'])->name('cars.update');
-                          Route::get('carz/{id}/delete', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::post('cars', [CarController::class,'store'])->name('cars');
+                          Route::get('carhome', [CarController::class,'index'])->name('home');
+                          Route::get('cars/{id}', [CarController::class,'edit'])->name('cars.edit');
 
-                          #<!------Task4-------¡>                              
+                          Route::post('cars/{id}', [CarController::class,'update'])->name('cars.update');
+                          Route::get('cars/{id}/delete', [CarController::class,'destroy'])->name('cars.destroy');
+
+                          #<!------classes-------¡>                              
 
                           Route::get('addclass', [ClassController::class,'create'])->name('add');
-                          Route::post('clazz', [ClassController::class,'store'])->name('clazz');
+                          Route::post('classes', [ClassController::class,'store'])->name('classes');
+                          Route::get('classhome', [ClassController::class,'index'])->name('home');
+                          Route::get('classes/{id}', [ClassController::class,'edit'])->name('classes.edit');
 
-
+                          Route::post('classes/{id}', [ClassController::class,'update'])->name('classes.update');
+                          Route::get('classes/{id}/delete', [ClassController::class,'destroy'])->name('classes.destroy');
                           
+
+
                           #<!------Validation?-------¡>                              
 
                           #<!------Task5-------¡>                              

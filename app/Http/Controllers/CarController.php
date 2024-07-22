@@ -77,6 +77,7 @@ $data = [
 
         $car=Car::findOrfail($id);
         // dd($car);
+            #return "car = " . $id;
         return view('edit_car', compact ('car'));
         // return  $car['id'];
 

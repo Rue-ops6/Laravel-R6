@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clazz;
+use App\Models\ClassData;
 
 
 class ClassController extends Controller
@@ -13,7 +13,11 @@ class ClassController extends Controller
      */
     public function index()
     {
-        //
+        /* get all classes from db '
+        return view all classes, classes data
+        select * from classes = Class::get();*/
+        $classes = ClassData::get();
+        return view('classes', compact ('classes'));    
     }
 
     /**
@@ -61,7 +65,7 @@ $data = [
     ];
 
    
-        Clazz::create($data);
+        ClassData::create($data);
         return "Submitted successfully";
         //other way        return response()->json(['message' => 'Data stored successfully']);
    
@@ -80,7 +84,13 @@ $data = [
      */
     public function edit(string $id)
     {
-        //
+
+        $class=ClassData::findOrfail($id);
+        // dd($class);
+            #return "class = " . $id;
+        return view('editclass', compact ('class'));
+        // return  $car['id'];
+
     }
 
     /**

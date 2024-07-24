@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Vertical (basic) form</h2>
-  <form action="{{route('sub')}}" method="POST"> <!---->
+  <form action="{{route('signin')}}" method="POST"> <!---->
   <!-- <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" /> --> <!--csrf field-->
     @csrf
     <div class="form-group">

@@ -198,20 +198,22 @@ Route::get('Wlc', function () {
 
                           Route::get('addcars', [CarController::class,'create'])->name('add');
                           Route::post('cars', [CarController::class,'store'])->name('cars');
-                          Route::get('carhome', [CarController::class,'index'])->name('home');
+                          Route::get('carhome', [CarController::class,'index'])->name('cars.home');
                           Route::get('cars/{id}', [CarController::class,'edit'])->name('cars.edit');
 
                           Route::post('cars/{id}', [CarController::class,'update'])->name('cars.update');
                           Route::get('cars/{id}/delete', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::get('cars/trashed', [CarController::class,'showDeleted'])->name('cars.showDeleted');
 
                           #<!------classes-------¡>                              
 
                           Route::get('addclass', [ClassController::class,'create'])->name('add');
                           Route::post('classes', [ClassController::class,'store'])->name('classes');
-                          Route::get('classhome', [ClassController::class,'index'])->name('home');
+                          Route::get('classhome', [ClassController::class,'index'])->name('classes.home');
                           Route::get('classes/{id}', [ClassController::class,'edit'])->name('classes.edit');
 
                           Route::post('classes/{id}', [ClassController::class,'update'])->name('classes.update');
+                          Route::get('classes/{id}/delete', [ClassController::class,'destroy'])->name('classes.destroy');
                           Route::get('classes/{id}/delete', [ClassController::class,'destroy'])->name('classes.destroy');
                           
 

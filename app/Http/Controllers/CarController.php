@@ -96,6 +96,20 @@ $data = [
      */
     public function destroy(string $id)
     {
-        //
-    }
+        Car::where('id',$id)->delete();
+
+        // return " data delete successfully";
+        return redirect()->route("cars.home");
+        }
+
+
+        public function showDeleted()
+        {
+            $cars = Car::onlyTrashed()->get();
+    
+            // return " data delete successfully";
+            return view('TrashedCars', compact("cars"));
+            }
+            // return redirect()->route("showDeleted");
+            
 }

@@ -39,14 +39,12 @@
 
 @foreach ($cars as $car)
             <tr>
-              <td scope="row">{{$car['carTitle']}}</td>
-              <td>{{$car['price']}}</td>
+            <td scope="row"><a href="{{route('details_car', $car['id'])}}">{{$car['carTitle']}}</a></td> 
+            <td>{{$car['price']}}</td>
               <td>{{Str::limit($car['description'], 20, $end = ' ...')}}</td>
-              <td>{{($car['pub'] == 1) ? "yes" : "no"}}</td>
-              <!-- <td>@if($car['pub']== 1) yes @else no @endif</td> -->
-              <td><a href="{{route("cars.edit", $car['id'])}}">Edit</a></td>
-              <td><a>Delete</a></td>
-            </tr>
+              <td>{{($car['pub'] == 1) ? "yes" : "no"}}</td> <!-- <td>@if($car['pub']== 1) yes @else no @endif</td> -->
+              <td><a href="{{route('cars.edit', $car['id'])}}">Edit</a></td>
+              <td><a href="#" >Delete</a> </td>            </tr>
 @endforeach
 
 

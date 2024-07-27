@@ -38,7 +38,7 @@
             @foreach ($cars as $car)
             <tr>
               <!-- <td scope="row">{{$car['carTitle']}}</td> -->
-              <td scope="row"><a href="{{route('details_car', $car['id'])}}">{{$car['carTitle']}}</a></td> 
+              <td scope="row"><a href="{{route('cars.details', $car['id'])}}">{{$car['carTitle']}}</a></td> 
               <!--For the name to be linkable instead of making a wole new column-->
               <td>{{$car->price}} $</td>
               <td>{{Str::limit($car['description'], 20, $end = ' ...')}}</td>

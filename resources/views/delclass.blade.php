@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Update Class</title>
+  <title>Permenant del'Class</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,12 +23,10 @@
   <main>
     <div class="container my-5">
       <div class="bg-light p-5 rounded">
-        <h2 class="fw-bold fs-2 mb-5 pb-2">Update Class</h2>
-        <form action="{{route('classes.update', $class->id)}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
+        <h2 class="fw-bold fs-2 mb-5 pb-2">Permenant del'Class</h2>
+        <form action="{{route('classes.del', $class->id)}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
           @csrf
-          @method('put')
-          <!-- @method('put') = <input type="hidden" name="id" value="{{ $data->id }}">
-<input type="submit" value="update"> -->
+          @method('delete')
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Class Title:</label>
             <div class="col-md-10">
@@ -68,7 +66,7 @@
           </div>
           <div class="text-md-end">
             <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-              Update class
+              Delete class
             </button>
           </div>
         </form>

@@ -27,26 +27,36 @@
             </div>
             <div class="col-lg-8 col-md-6 col-12 card-body">
               <div class="mb-4 text-center py-2">
-                <h2 class="fw-bold bg-light card-header">{{$car['carTitle']}}</h2>
+                <h2 class="fw-bold bg-light card-header">{{$class['classTitle']}}</h2>
               </div>
               <div class="mb-4">
                 <p class="card-text">
-                  <span class="fw-bold">Price:</span> {{$car['price']}} $
+                  <span class="fw-bold">Capacity:</span> {{$class['capacity']}}
+                </p>
+              </div>                         
+              <div class="mb-4">
+                <p class="card-text">
+                  <span class="fw-bold">Price:</span> {{$class['price']}} $
                 </p>
               </div>
               <div class="mb-4">
                 <p class="card-text">
-                  <span class="fw-bold">Published:</span> @if($car['pub']== 1) yes @else no @endif <!--{{($car['pub'] == 1) ? "yes" : "no"}}-->
+                  <span class="fw-bold">Is fulled:</span> @if($class['fulled']== 1) yes @else no @endif <!--{{($class['fulled'] == 1) ? "yes" : "no"}}-->
                 </p>
               </div>
               <div class="mb-4">
                 <p class="card-text">
-                  <span class="fw-bold">Description:</span><br>{{$car->description}}
+                  <span class="fw-bold">Beginning time:</span><br>{{$class->begTime}}
+                </p>
+              </div>              
+              <div class="mb-4">
+                <p class="card-text">
+                  <span class="fw-bold">Ending time:</span><br>{{$class->endTime}}
                 </p>
               </div>
               <div class="text-md-end">
-                <a href="{{route('cars.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-                  Back to All cars
+                <a href="{{route('classes.index')}}" class="btn mt-4 btn-primary text-white fs-5 fw-bold border-0 py-2 px-md-5">
+                  Back to All classes
                 </a>
               </div>
             </div>

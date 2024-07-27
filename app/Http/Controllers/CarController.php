@@ -10,7 +10,6 @@ class CarController extends Controller
     /*    #1)
      * Display a listing of the resource.
      */
-
     public function index()
     {
         /* get all cars from db '
@@ -45,7 +44,15 @@ class CarController extends Controller
      $desc = 'test';
      $pub = true;*/
 
-     //variables not fixed
+
+        //variables not fixed
+ /* elfk w tfasil str 'pub' => isset($request->pub):
+if(isset($request->pub)){
+    $pub = true;
+}else{
+    $pub = false;    
+}
+l2n isset bs 4aila el values true w false keda keda*/
 $data = [
     'carTitle' => $request->title, #'key' from db migration => $value -> gi mn form frontend-.
     'description' => $request->desc,
@@ -53,7 +60,6 @@ $data = [
     'pub' => isset($request->pub),
 ];
 
-       
             Car::create($data);
      /*Car::create([
         'carTitle'=> $title,
@@ -62,8 +68,7 @@ $data = [
         'pub'=> $pub,
      ]);*/
 
-     return redirect()->route('cars.home');  # instead of: return "A car was created & stored to ur DB";
-
+     return redirect()->route('cars.index');  # instead of: return "A car was created & stored to ur DB";
     }
 
 
@@ -100,16 +105,19 @@ $data = [
     * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-    //dd($request,$id);
+    {            //dd($request,$id);
+
+        //$request ==> data to be updated
     $data = [
         'carTitle' => $request->title, #'key' from db migration => $value -> gi mn form frontend-.
         'description' => $request->desc,
         'price' => $request->price,
         'pub' => isset($request->pub),
     ];
+
+                    //zi fi sql lw sebtaha hi3mel update * fa lazem a2wl where el class id =$id ell d5lto
     car::where('id',$id)->update($data);
-     return redirect()->route('cars.home');  #instead of writing a msg
+     return redirect()->route('cars.index');  #instead of writing a msg
 
     }
 
@@ -123,7 +131,7 @@ $data = [
         Car::where('id',$id)->delete();
 
         // return " data delete successfully";
-        return redirect()->route("cars.home");
+        return redirect()->route("cars.index");
         }
 
 
@@ -136,8 +144,11 @@ $data = [
             $cars = Car::onlyTrashed()->get();
     
             // return " data delete successfully";
-            return view('TrashedCars', compact("cars"));
+            return view('trashed_car', compact("cars"));
             }
             // return redirect()->route("showDeleted");
+            
+
+
             
 }

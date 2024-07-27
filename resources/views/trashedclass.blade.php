@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Classes</title>
+  <title>Trashed cars</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,37 +23,31 @@
   <main>
     <div class="container my-5">
       <div class="bg-light p-5 rounded">
-        <h2 class="fw-bold fs-2 mb-5 pb-2">All Classes</h2>
+        <h2 class="fw-bold fs-2 mb-5 pb-2">Trashed cars</h2>
         <table class="table table-hover">
           <thead>
             <tr class="table-dark">
-              <th scope="col">Class Title</th>
-              <th scope="col">Capacity</th>
-              <th scope="col">Fulled</th>
+              <th scope="col">Car Title</th>
               <th scope="col">Price</th>
-              <th scope="col">Beginning Time</th>
-              <th scope="col">Ending Time</th>
+              <th scope="col">Description</th>
+              <th scope="col">Published</th>
               <th scope="col">Edit</th>
-              <!-- <th scope="col">Details</th> -->
-              <th scope="col">Delete</th>            
+              <th scope="col">Permenant Delete</th>
             </tr>
           </thead>
           <tbody>
 
-@foreach ($classes as $info)
+@foreach ($cars as $car)
             <tr>
-              <!-- <td scope="row">{{$info['classTitle']}}</td> -->
-              <td scope="row"><a href="{{route('classes.details', $info['id'])}}">{{$info['classTitle']}}</a></td> 
-              <!--For the name to be linkable instead of making a wole new column-->
-              <td>{{$info['capacity']}}</td>
-              <td>{{($info['fulled'] == 1) ? "yes" : "no"}}</td>
-              <!-- <td>@if($info['fulled']== 1) yes @else no @endif</td> -->
-              <td>{{$info['price']}} $</td>
+            <td scope="row"><a href="{{route('classes.details', $info['id'])}}">{{$info['classTitle']}}</a></td>  <!--<td scope="row">{{$info['classTitle']}}</td>-->
+            <td>{{$info['capacity']}}</td>
+            <td>{{($info['fulled'] == 1) ? "yes" : "no"}}</td>     <!-- <td>@if($info['fulled']== 1) yes @else no @endif</td> -->          
+            <td>{{$info['price']}} $</td>
               <td>{{$info['begTime']}}</td>
               <td>{{$info['endTime']}}</td>
               <td><a href="{{route('classes.edit', $info['id'])}}">Edit</a></td>
-              <!-- <td><a href="{{route('classes.details',$info['id'])}}">Details</a></td> -->
-              <td><a href="{{route('classes.destroy', $info['id'])}}" onclick="confirm('Are you sure you want to delete?')">Delete</a></td>
+              <td><a href="#" >Delete</a> </td>            
+            
             </tr>
 @endforeach
 

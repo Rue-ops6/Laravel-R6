@@ -21,6 +21,7 @@ return new class extends Migration
             $table->time('begTime');
             $table->time('endTime');
 
+            $table->softDeletes();            
             $table->timestamps();
         });
     }

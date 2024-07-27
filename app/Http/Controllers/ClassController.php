@@ -8,7 +8,7 @@ use App\Models\ClassData;
 
 class ClassController extends Controller
 {
-    /**
+    /*    #1)
      * Display a listing of the resource.
      */
     public function index()
@@ -20,7 +20,9 @@ class ClassController extends Controller
         return view('classes', compact ('classes'));    
     }
 
-    /**
+
+
+    /*    #2)
      * Show the form for creating a new resource.
      */
     public function create()
@@ -28,7 +30,9 @@ class ClassController extends Controller
         return view('addclass');
     }
 
-    /**
+    
+
+     /*    #3)
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -45,10 +49,7 @@ class ClassController extends Controller
 
                 // data from form
 
-
-
 /* elfk w tfasil str 'fulled' => isset($request->fulled):
-
 if(isset($request->fulled)){
     $fulled = true;
 }else{
@@ -64,28 +65,33 @@ $data = [
 'endTime' => $request->endTime,
     ];
 
-   
         ClassData::create($data);
-        return "Submitted successfully";
-        //other way        return response()->json(['message' => 'Data stored successfully']);
-   
+
+        return redirect()->route('classes.index');
+        //return "Submitted successfully";  //other way        return response()->json(['message' => 'Data stored successfully']);
        }
 
-    /**
+
+
+    /*    #4)
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
-    }
+        $class=ClassData::findOrFail($id);
+        
+        return view('detailsclass',compact('class'));
+        }
+    
 
-    /**
-     * Show the form for editing the specified resource.
+
+  /*    #5)
+         * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
 
-        $class=ClassData::findOrfail($id);
+        $class=ClassData::findOrFail($id);
         // dd($class);
             #return "class = " . $id;
         return view('editclass', compact ('class'));
@@ -93,19 +99,57 @@ $data = [
 
     }
 
-    /**
-     * Update the specified resource in storage.
+
+    
+     /*    #6)
+    * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
-    }
+    {            //dd($request,$id);
 
-    /**
-     * Remove the specified resource from storage.
+        //$request ==> data to be updated
+        $data = [
+            'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.
+            'capacity' => $request->capacity,
+            'fulled' => isset($request->fulled),
+            'price' => $request->price,
+            'begTime' => $request->begTime,
+            'endTime' => $request->endTime,
+                ];
+            
+                //zi fi sql lw sebtaha hi3mel update * fa lazem a2wl where el car id =$id ell d5ltoh
+                ClassData::where('id',$id)->update($data);
+                return redirect()->route('classes.index');  //return "Submitted successfully"; 
+                }
+
+
+
+      /*    #7)
+     * permenent del/ Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
-    }
-}
+        // $id = $request->id;
+        ClassData::where('id',$id)->delete();
+
+        // return " data delete successfully";
+        return redirect()->route("classes.index");   
+     }
+
+
+
+    /*    #8)
+     * soft del.
+     */
+    public function showDeleted()
+    {
+        $classes = ClassData::onlyTrashed()->get();
+
+        // return " data delete successfully";
+        return view('trashedclass', compact("classes"));
+        }
+        // return redirect()->route("showDeleted");
+        
+
+
+        }

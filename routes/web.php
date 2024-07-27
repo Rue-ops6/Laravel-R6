@@ -196,32 +196,32 @@ Route::get('Wlc', function () {
 
                           #<!------Cars-------¡>                              
 
-                          Route::get('addcars', [CarController::class,'create'])->name('add');
-                          Route::post('cars', [CarController::class,'store'])->name('cars');
-                          Route::get('carshome', [CarController::class,'index'])->name('cars.home');
+                          Route::get('carshome', [CarController::class,'index'])->name('cars.index');
+                          Route::get('add/cars', [CarController::class,'create'])->name('cars.add');
+                          Route::post('cars', [CarController::class,'store'])->name('cars.store');
 
                           Route::get('carsedit/{id}', [CarController::class,'edit'])->name('cars.edit');
                           Route::put('cars/{id}', [CarController::class,'update'])->name('cars.update');
 
                           Route::get('cars/{id}/details',[CarController::class,'show'])->name('cars.details');
-                          Route::get('carsdel/{id}', [CarController::class,'destroy'])->name('cars.destroy');
-                          Route::get('cars/trashed', [CarController::class,'showDeleted'])->name('cars.showDeleted');
+                          Route::get('cars/{id}/del', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::get('carstrashed', [CarController::class,'showDeleted'])->name('cars.restore');
 
 
 
 
                           #<!------classes-------¡>                              
 
-                          Route::get('addclass', [ClassController::class,'create'])->name('add');
-                          Route::post('classes', [ClassController::class,'store'])->name('classes');
-                          Route::get('classhome', [ClassController::class,'index'])->name('classes.home');
+                          Route::get('classeshome', [ClassController::class,'index'])->name('classes.index');
+                          Route::get('add/classes', [ClassController::class,'create'])->name('classes.add');
+                          Route::post('classes', [ClassController::class,'store'])->name('classes.store');
 
                           Route::get('classesedit/{id}', [ClassController::class,'edit'])->name('classes.edit');
                           Route::put('classes/{id}', [ClassController::class,'update'])->name('classes.update');
 
                           Route::get('classes/{id}/details',[ClassController::class,'show'])->name('classes.details');
-                          Route::get('classesdel/{id}', [ClassController::class,'destroy'])->name('classes.destroy');
-                          Route::get('classes/trashed', [ClassController::class,'showDeleted'])->name('classes.showDeleted');
+                          Route::get('classes/{id}/del', [ClassController::class,'destroy'])->name('classes.destroy');
+                          Route::get('classestrashed', [ClassController::class,'showDeleted'])->name('classes.restore');
 
 
 

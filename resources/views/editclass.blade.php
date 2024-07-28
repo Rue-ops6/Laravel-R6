@@ -27,8 +27,8 @@
         <form action="{{route('classes.update', $class->id)}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
           @csrf
           @method('put')
-          <!-- @method('put') = <input type="hidden" name="id" value="{{ $data->id }}">
-<input type="submit" value="update"> -->
+          <!-- {-- @method('put') = <input type="hidden" name="id" value="{{ $class->id }}">
+<input type="submit" value="update"> --} -->
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Class Title:</label>
             <div class="col-md-10">

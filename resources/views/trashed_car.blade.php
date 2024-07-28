@@ -53,7 +53,7 @@
   </form>
   </td>  
 
-  <td><form action="{{route('cars.destroy', $car['id'])}}" method='POST' > 
+  <td><form action="{{route('cars.destroy', $car['id'])}}" method='POST' onclick="return confirm('Are you sure you want to delete?')"> 
   @csrf
 @method("delete")
 <button type="submit" class="btn btn-link m-0 p-0">Force Destroy</button>

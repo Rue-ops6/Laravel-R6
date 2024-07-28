@@ -119,6 +119,17 @@ $data = [
     public function update(Request $request, string $id)
     {            //dd($request,$id);
 
+
+        #validation:
+$data = $request->validate([
+    'title' => "required|string",
+    'desc' => "required|string|max:1000",
+    'price' => "required|decimal:1",
+]);
+
+$data['pub'] = isset($request->pub); 
+dd($data);
+
         //$request ==> data to be updated
     $data = [
         'carTitle' => $request->title, #'key' from db migration => $value -> gi mn form frontend-.

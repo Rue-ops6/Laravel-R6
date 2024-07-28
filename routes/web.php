@@ -204,11 +204,11 @@ Route::get('Wlc', function () {
                           Route::get('/edit/{id}', [CarController::class,'edit'])->name('cars.edit');
                           Route::put('/{id}', [CarController::class,'update'])->name('cars.update');
 
-                          Route::get('/{id}/details',[CarController::class,'show'])->name('cars.details');
-                          Route::get('/{id}/del', [CarController::class,'softdel'])->name('cars.delete');
+                          Route::get('/details/{id}',[CarController::class,'show'])->name('cars.details');
+                          Route::get('/del/{id}', [CarController::class,'softdel'])->name('cars.delete');
                           Route::get('/trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
-                          Route::patch('/"{id}"', [CarController::class,'restore'])->name('cars.restore');
-                          Route::delete('/"{id}"', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::patch('/{id}', [CarController::class,'restore'])->name('cars.restore');
+                          Route::delete('/{id}', [CarController::class,'destroy'])->name('cars.destroy');
                           
                         
                         });
@@ -224,11 +224,11 @@ Route::get('Wlc', function () {
                           Route::get('/edit/{id}', [ClassController::class,'edit'])->name('classes.edit');
                           Route::put('/{id}', [ClassController::class,'update'])->name('classes.update');
 
-                          Route::get('/{id}/details',[ClassController::class,'show'])->name('classes.details');
-                          Route::delete('/{id}/del', [ClassController::class,'softdel'])->name('classes.delete');
+                          Route::get('/details/{id}',[ClassController::class,'show'])->name('classes.details');
+                          Route::delete('/del/{id}', [ClassController::class,'softdel'])->name('classes.delete');
                           Route::get('/trashed', [ClassController::class,'showDeleted'])->name('classes.trashed');
-                          Route::patch('/"{id}"', [ClassController::class,'restore'])->name('classes.restore');
-                          Route::delete('/"{id}"', [ClassController::class,'destroy'])->name('classes.destroy');
+                          Route::patch('/{id}', [ClassController::class,'restore'])->name('classes.restore');
+                          Route::delete('/{id}', [ClassController::class,'destroy'])->name('classes.destroy');
                         
                         
                         });
@@ -238,7 +238,7 @@ Route::get('Wlc', function () {
 
 
 
-                          
+
 
 
 

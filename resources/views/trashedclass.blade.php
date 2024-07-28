@@ -54,8 +54,7 @@
                   <button type="submit" class="btn btn-link m-0 p-0">Restore</button>
                 </form>
               </td>
-              <td>
-                <form action="{{route('classes.destroy', $class['id'])}}" method='POST'>
+              <td> <form onclick="return confirm('Are you sure you want to delete?')" action="{{route('classes.destroy', $class['id'])}}" method='POST' >
                   @csrf
                   @method("delete")
                   <button type="submit" class="btn btn-link m-0 p-0">ForceDel</button>

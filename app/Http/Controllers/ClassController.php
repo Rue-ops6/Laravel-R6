@@ -39,8 +39,23 @@ class ClassController extends Controller
     {
     
         #dd($request);
+
+        #validation:
+$data = $request->validate([
+    'classTitle' => "required|string",
+    'capacity' => "required|digits:1",
+    'price' => "required|decimal:1",
+    'begTime' => "required",
+    'endTime' => "required",
+    #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte
+]);
+
+$data['fulled'] = isset($request->fulled); 
+#dd($data);
+
+
         // fixed data
-        /*$title ='maths';
+        /*$classTitle ='maths';
         $capacity = '10';
         $fulled = true;
         $price ='190000';
@@ -56,14 +71,14 @@ if(isset($request->fulled)){
     $fulled = false;    
 }
 l2n isset bs 4aila el values true w false keda keda*/
-$data = [
+/*$data = [
 'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.
 'capacity' => $request->capacity,
 'fulled' => isset($request->fulled),
 'price' => $request->price,
 'begTime' => $request->begTime,
 'endTime' => $request->endTime,
-    ];
+    ];*/
 
         ClassData::create($data);
 
@@ -107,15 +122,30 @@ $data = [
     public function update(Request $request, string $id)
     {            //dd($request,$id);
 
+
+                #validation:
+$data = $request->validate([
+    'classTitle' => "required|string",
+    'capacity' => "required|digits:1",
+    'price' => "required|decimal:3",
+    'begTime' => "required",
+    'endTime' => "required",
+    #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte
+]);
+
+$data['fulled'] = isset($request->fulled); 
+dd($data);
+
+
         //$request ==> data to be updated
-        $data = [
+       /* $data = [
             'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.
             'capacity' => $request->capacity,
             'fulled' => isset($request->fulled),
             'price' => $request->price,
             'begTime' => $request->begTime,
             'endTime' => $request->endTime,
-                ];
+                ];*/
             
                 //zi fi sql lw sebtaha hi3mel update * fa lazem a2wl where el car id =$id ell d5ltoh
                 ClassData::where('id',$id)->update($data);

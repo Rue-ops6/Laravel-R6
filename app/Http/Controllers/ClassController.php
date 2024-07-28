@@ -125,9 +125,9 @@ $data = [
 
 
       /*    #7)
-     * permenent del/ Remove the specified resource from storage.
+     * Soft delete.
      */
-    public function destroy(string $id)
+    public function softdel(string $id)
     {
         // $id = $request->id;
         ClassData::where('id',$id)->delete();
@@ -138,8 +138,21 @@ $data = [
 
 
 
-    /*    #8)
-     * soft del.
+      /*    #8)
+     * permenent del/ Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        // $id = $request->id;
+        ClassData::where('id',$id)->delete();
+
+        // return " data delete successfully";
+        return redirect()->route("classes.trashed");   
+     }
+
+
+    /*    #9)
+     * show del.
      */
     public function showDeleted()
     {
@@ -151,5 +164,16 @@ $data = [
         // return redirect()->route("showDeleted");
         
 
+    /*    #10)
+     * restore.
+     */
+    public function restore(string $id)
+    {
+        ClassData::where("id", $id)->restore();
+
+        // return " data restored successfully";
+        return redirect()->route("classes.index");        
+
+        }
 
         }

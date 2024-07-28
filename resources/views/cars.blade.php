@@ -17,6 +17,8 @@
 </head>
 
 <body>
+{{return view('NAV_car')}}
+
   <main>
     <div class="container my-5">
       <div class="bg-light p-5 rounded">
@@ -47,7 +49,7 @@
               <!-- <td>@if($car['pub']== 1) yes @else no @endif</td> -->
               <td><a href="{{route('cars.edit', $car['id'])}}">Edit</a></td>
               <!-- <td><a href="{{route('cars.details',$car['id'])}}">Details</a></td> -->
-              <td><a href="{{route('cars.destroy', $car['id'])}}" onclick="confirm('Are you sure you want to delete?')">Delete</a></td>
+              <td><a href="{{route('cars.delete', $car['id'])}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
             </tr>
             @endforeach
 

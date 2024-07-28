@@ -32,20 +32,36 @@
               <th scope="col">Description</th>
               <th scope="col">Published</th>
               <th scope="col">Edit</th>
+              <th scope="col">Restore</th>
               <th scope="col">Permenant Delete</th>
+
             </tr>
           </thead>
           <tbody>
 
 @foreach ($cars as $car)
             <tr>
-            <td scope="row"><a href="{{route('details_car', $car['id'])}}">{{$car['carTitle']}}</a></td> 
+            <td scope="row"><a href="{{route('cars.details', $car['id'])}}">{{$car['carTitle']}}</a></td> 
             <td>{{$car['price']}}</td>
               <td>{{Str::limit($car['description'], 20, $end = ' ...')}}</td>
               <td>{{($car['pub'] == 1) ? "yes" : "no"}}</td> <!-- <td>@if($car['pub']== 1) yes @else no @endif</td> -->
               <td><a href="{{route('cars.edit', $car['id'])}}">Edit</a></td>
-              <td><a href="#" >Delete</a> </td>            </tr>
-@endforeach
+              <td><form action="{{route('cars.restore', $car['id'])}}" method='POST' >       
+@csrf
+@method("patch")
+<button type="submit" class="btn btn-link m-0 p-0">Restore</button>
+  </form>
+  </td>  
+
+  <td><form action="{{route('cars.destroy', $car['id'])}}" method='POST' > 
+  @csrf
+@method("delete")
+<button type="submit" class="btn btn-link m-0 p-0">Force Destroy</button>
+  </form>
+</td>  
+
+
+</tr>  @endforeach
 
 
           </tbody>

@@ -37,8 +37,20 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        
     //dd($request);
+      
+#validation:
+$data = $request->validate([
+    'title' => "required|string",
+    'desc' => "required|string|max:1000",
+    'price' => "required|decimal:1",
+]);
+
+$data['pub'] = isset($request->pub); 
+dd($data);
+
+
+     #fixed data
      /*$title ='BMW';
      $price ='190000';
      $desc = 'test';
@@ -124,20 +136,34 @@ $data = [
 
 
     /*    #7)
-     * permenent del/ Remove the specified resource from storage.
+     * Soft Delete.
      */
-    public function destroy(string $id)
+    public function softdel(string $id)
     {
         Car::where('id',$id)->delete();
 
         // return " data delete successfully";
         return redirect()->route("cars.index");
+        }    
+
+
+
+
+       /*    #8)
+     * permenent del/ Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        Car::where('id',$id)->forceDelete();
+
+        // return " data delete successfully";
+        return redirect()->route("cars.index");
         }
-
-
         
-    /*    #8)
-     * soft del.
+        
+
+    /*    #9)
+     * show del.
      */
         public function showDeleted()
         {
@@ -149,6 +175,15 @@ $data = [
             // return redirect()->route("showDeleted");
             
 
+    /*    #10)
+     * restore.
+     */
+            public function restore(string $id)
+        {
+            Car::where("id", $id)->restore();
+    
+            // return " data restored successfully";
+            return redirect()->route("cars.index");        
 
-            
+            }
 }

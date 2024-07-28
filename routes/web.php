@@ -195,37 +195,52 @@ Route::get('Wlc', function () {
 
 
                           #<!------Cars-------¡>                              
+                          Route::prefix("cars")->group(function() {
 
-                          Route::get('carshome', [CarController::class,'index'])->name('cars.index');
-                          Route::get('add/cars', [CarController::class,'create'])->name('cars.add');
-                          Route::post('cars', [CarController::class,'store'])->name('cars.store');
+                          Route::get('/home', [CarController::class,'index'])->name('cars.index');
+                          Route::get('/add', [CarController::class,'create'])->name('cars.add');
+                          Route::post('', [CarController::class,'store'])->name('cars.store');
 
-                          Route::get('carsedit/{id}', [CarController::class,'edit'])->name('cars.edit');
-                          Route::put('cars/{id}', [CarController::class,'update'])->name('cars.update');
+                          Route::get('/edit/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::put('/{id}', [CarController::class,'update'])->name('cars.update');
 
-                          Route::get('cars/{id}/details',[CarController::class,'show'])->name('cars.details');
-                          Route::get('cars/{id}/del', [CarController::class,'destroy'])->name('cars.destroy');
-                          Route::get('carstrashed', [CarController::class,'showDeleted'])->name('cars.restore');
-
-
-
+                          Route::get('/{id}/details',[CarController::class,'show'])->name('cars.details');
+                          Route::get('/{id}/del', [CarController::class,'softdel'])->name('cars.delete');
+                          Route::get('/trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
+                          Route::patch('/"{id}"', [CarController::class,'restore'])->name('cars.restore');
+                          Route::delete('/"{id}"', [CarController::class,'destroy'])->name('cars.destroy');
+                          
+                        
+                        });
+                          #Route::resources('cars', [CarController::class]);
 
                           #<!------classes-------¡>                              
+                          Route::prefix("classes")->group(function() {
 
-                          Route::get('classeshome', [ClassController::class,'index'])->name('classes.index');
-                          Route::get('add/classes', [ClassController::class,'create'])->name('classes.add');
-                          Route::post('classes', [ClassController::class,'store'])->name('classes.store');
+                          Route::get('/home', [ClassController::class,'index'])->name('classes.index');
+                          Route::get('/add', [ClassController::class,'create'])->name('classes.add');
+                          Route::post('', [ClassController::class,'store'])->name('classes.store');
 
-                          Route::get('classesedit/{id}', [ClassController::class,'edit'])->name('classes.edit');
-                          Route::put('classes/{id}', [ClassController::class,'update'])->name('classes.update');
+                          Route::get('/edit/{id}', [ClassController::class,'edit'])->name('classes.edit');
+                          Route::put('/{id}', [ClassController::class,'update'])->name('classes.update');
 
-                          Route::get('classes/{id}/details',[ClassController::class,'show'])->name('classes.details');
-                          Route::get('classes/{id}/del', [ClassController::class,'destroy'])->name('classes.destroy');
-                          Route::get('classestrashed', [ClassController::class,'showDeleted'])->name('classes.restore');
+                          Route::get('/{id}/details',[ClassController::class,'show'])->name('classes.details');
+                          Route::delete('/{id}/del', [ClassController::class,'softdel'])->name('classes.delete');
+                          Route::get('/trashed', [ClassController::class,'showDeleted'])->name('classes.trashed');
+                          Route::patch('/"{id}"', [ClassController::class,'restore'])->name('classes.restore');
+                          Route::delete('/"{id}"', [ClassController::class,'destroy'])->name('classes.destroy');
+                        
+                        
+                        });
+                          #Route::resources('classes', [ClassController::class]);
+
+                          #<!------Validation-------¡> 
 
 
 
-                          #<!------Validation?-------¡>                              
+                          
+
+
 
 
 

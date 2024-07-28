@@ -108,10 +108,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"
-                >Time:</label
-              >
+                >Time:</label>
               <div class="col-md-10">
-                <label for="" class="form-label">From: <input type="time" class="form-control" name="begTime"></label>  <!--{{ ['begTime']->format('h : i A') }}  --  {{$date = date_create($class['begTime'])}}; . {{date_format($date, "h : i A")}}; -->
+                <label for="" class="form-label col-md-2 fw-bold text-md-end">From: <input type="time" class="form-control  py-2" name="endTime"  value="$createdAt = Carbon::parse($class['begtime']);""></label>  <!--{{ ['begTime']->format('h : i A') }}  --  {{$date = date_create($class['begTime'])}}; . {{date_format($date, "h : i A")}}; -->
 
  <!-- <$?php if (!Page.IsPostBack) {
   for (int begTime = 0; begTime < 24; begTime++) {

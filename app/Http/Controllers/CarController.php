@@ -159,7 +159,6 @@ dd($data);
 
 
 
-
        /*    #8)
      * permenent del/ Remove the specified resource from storage.
      */
@@ -168,7 +167,7 @@ dd($data);
         Car::where('id',$id)->forceDelete();
 
         // return " data delete successfully";
-        return redirect()->route("cars.index");
+        return redirect()->route("cars.trashed");
         }
         
         
@@ -186,6 +185,7 @@ dd($data);
             // return redirect()->route("showDeleted");
             
 
+
     /*    #10)
      * restore.
      */
@@ -195,6 +195,9 @@ dd($data);
     
             // return " data restored successfully";
             return redirect()->route("cars.index");        
-
             }
+
+
+
+            
 }

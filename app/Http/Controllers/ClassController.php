@@ -174,11 +174,12 @@ dd($data);
     public function destroy(string $id)
     {
         // $id = $request->id;
-        ClassData::where('id',$id)->delete();
+        ClassData::where('id',$id)->forceDelete();
 
         // return " data delete successfully";
         return redirect()->route("classes.trashed");   
      }
+
 
 
     /*    #9)
@@ -194,6 +195,7 @@ dd($data);
         // return redirect()->route("showDeleted");
         
 
+
     /*    #10)
      * restore.
      */
@@ -203,7 +205,11 @@ dd($data);
 
         // return " data restored successfully";
         return redirect()->route("classes.index");        
-
         }
 
+
+
+
+
+        
         }

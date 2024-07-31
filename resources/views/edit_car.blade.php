@@ -27,31 +27,40 @@
         <form action="{{route('cars.update', $car->id)}}" method="POST" class="px-md-5"   enctype="multipart/form-data">
           @csrf
           @method('put')
-          <!-- @method('put') = <input type="hidden" name="id" value="{{ $data->id }}">
-<input type="submit" value="update"> -->
+          {{--<!-- @method('put') = <input type="hidden" name="id" value="{{ $data->id }}">
+<input type="submit" value="update"> -->--}}
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Car Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="BMW" class="form-control py-2"  name="title"   value="{{$car['carTitle']}}"/>
+              <input type="text" placeholder="BMW" class="form-control py-2"  name="title"   value="{{old('carTitle', $car->carTitle)}}"/>
+              @error('title')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
             </div>
           </div>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Price:</label>
             <div class="col-md-10">
-              <input type="number" step="0.1" placeholder="Enter price" class="form-control py-2"  name="price"    value="{{$car->price}}"/>
+              <input type="number" step="0.1" placeholder="Enter price" class="form-control py-2"  name="price"    value="{{old('price', $car->price)}}" />
+              @error('price')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
             </div>
           </div>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Description:</label>
             <div class="col-md-10">
-              <textarea id="" cols="30" rows="5" placeholder="Test" class="form-control py-2"  name="desc">{{$car->description}}</textarea>
+              <textarea id="" cols="30" rows="5" placeholder="Test" class="form-control py-2"  name="desc">{{old('description', $car->description)}}</textarea>
+              @error('desc')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
             </div>
           </div>
           <hr>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Published:</label>
             <div class="col-md-10">
-              <input type="checkbox" class="form-check-input" style="padding: 0.7rem;"   name="pub"    @checked($car->pub)/>
+              <input type="checkbox" class="form-check-input" style="padding: 0.7rem;"   name="pub"   value="1" @checked($car->pub)/>
             </div>
           </div>
           <div class="text-md-end">

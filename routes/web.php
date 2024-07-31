@@ -195,13 +195,13 @@ Route::get('Wlc', function () {
 
 
                           #<!------Cars-------¡>                              
-                          Route::prefix("cars")->group(function() {
+                          Route::prefix('cars')->group(function() {
 
                           Route::get('/home', [CarController::class,'index'])->name('cars.index');
                           Route::get('/add', [CarController::class,'create'])->name('cars.add');
                           Route::post('', [CarController::class,'store'])->name('cars.store');
 
-                          Route::get('/edit/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::get('{id}/edit', [CarController::class,'edit'])->name('cars.edit');
                           Route::put('/{id}', [CarController::class,'update'])->name('cars.update');
 
                           Route::get('/details/{id}',[CarController::class,'show'])->name('cars.details');
@@ -215,7 +215,7 @@ Route::get('Wlc', function () {
                           #Route::resources('cars', [CarController::class]);
 
                           #<!------classes-------¡>                              
-                          Route::prefix("classes")->group(function() {
+                          Route::prefix('classes')->group(function() {
 
                           Route::get('/home', [ClassController::class,'index'])->name('classes.index');
                           Route::get('/add', [ClassController::class,'create'])->name('classes.add');
@@ -235,6 +235,11 @@ Route::get('Wlc', function () {
                           #Route::resources('classes', [ClassController::class]);
 
                           #<!------Validation-------¡> 
+
+
+                           #<!------upload-------¡> 
+                           Route::get('uploadFile', [ExampleController::class,'uploadFile']);
+                           Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
 
 
 

@@ -44,9 +44,9 @@ class ClassController extends Controller
 $data = $request->validate([
     'classTitle' => "required|string",
     'capacity' => "required|digits:1",
-    'price' => "required|decimal:1",
-    'begTime' => "required",
-    'endTime' => "required",
+    'price' => "required|decimal:0,3",
+    'begTime' => "required|date_format:H:i",
+    'endTime' => "required|date_format:H:i",
     #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte
 ]);
 
@@ -127,7 +127,7 @@ l2n isset bs 4aila el values true w false keda keda*/
 $data = $request->validate([
     'classTitle' => "required|string",
     'capacity' => "required|digits:1",
-    'price' => "required|decimal:3",
+    'price' => "required|decimal:0,3",
     'begTime' => "required",
     'endTime' => "required",
     #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte

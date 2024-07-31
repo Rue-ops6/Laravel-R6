@@ -47,7 +47,7 @@ $data = $request->validate([
 ]);
 
 $data['pub'] = isset($request->pub); 
-dd($data);
+#dd($data);
 
 
      #fixed data
@@ -128,7 +128,7 @@ $data = $request->validate([
 ]);
 
 $data['pub'] = isset($request->pub); 
-dd($data);
+#dd($data);
 
         //$request ==> data to be updated
     $data = [

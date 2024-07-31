@@ -17,7 +17,7 @@
 </head>
 
 <body>
-{-- @include('NAV_car') --}
+{{-- @include('NAV_car') --}}
 
 <main>
     <div class="container my-5">

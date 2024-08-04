@@ -21,6 +21,8 @@ return new class extends Migration
             $table->time('begTime');
             $table->time('endTime');
 
+            $table->string('image', 250);
+
             $table->softDeletes();            
             $table->timestamps();
         });

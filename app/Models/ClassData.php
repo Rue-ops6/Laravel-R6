@@ -18,6 +18,7 @@ class ClassData extends Model
         'price',
         'begTime',
         'endTime',
+        'image',
         ];
 
 }

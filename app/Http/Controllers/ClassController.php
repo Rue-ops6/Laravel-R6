@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassData;
+use App\Traits\Common;
 
 
 class ClassController extends Controller
 {
+    use Common;
+
     /*    #1)
      * Display a listing of the resource.
      */
@@ -47,10 +50,12 @@ $data = $request->validate([
     'price' => "required|decimal:0,3",
     'begTime' => "required|date_format:H:i",
     'endTime' => "required|date_format:H:i",
+    'image' => "required|mimes:png,jpg,jpeg|max:2048",
     #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte
 ]);
 
 $data['fulled'] = isset($request->fulled); 
+$data['image'] = $this->uploadFile($request->image,"assets/images"); 
 #dd($data);
 
 
@@ -130,11 +135,16 @@ $data = $request->validate([
     'price' => "required|decimal:0,3",
     'begTime' => "required",
     'endTime' => "required",
+    'image' => "nunllable|mimes:png,jpg,jpeg|max:2048",
+
     #didnot work unfrotunitly: 'endTime' => "required|date_format:H:i A", even after using php artisan make:request StoreTimeRequest... strtotime didnot wok as well even after illumnte
 ]);
 
 $data['fulled'] = isset($request->fulled); 
-dd($data);
+if($request->hasFile('image')) {
+    $data['image'] = $this->uploadFile($request->image,"assets/images"); 
+    }
+#dd($data);
 
 
         //$request ==> data to be updated

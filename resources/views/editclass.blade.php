@@ -59,6 +59,18 @@
             <label for="" class="form-label"><input type="time" placeholder="Enter endTime" class="form-control" name="endTime"   value="{{$class['endTime']}}"></label> 
             </div>
           </div>
+          <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input type="file" id="image" class="form-control"  name="image"  value="{{$class->image}}"  >
+              @error('image')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+              <img src="{{asset('assets/images/'.$class->image)}}" alt="class-image"
+              style="max-width: 500px">
+
+            </div>
+          </div>
           <hr>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Is Fulled:</label>

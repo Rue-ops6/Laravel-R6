@@ -215,20 +215,24 @@ Route::get('Wlc', function () {
                           #Route::resources('cars', [CarController::class]);
 
                           #<!------classes-------¡>                              
-                          Route::prefix('classes')->group(function() {
+                          Route::group([
+                            'prefix' => 'classes',  #for the uri
+                            'controller' => ClassController::class,  #then we'll del the [] from the pages that open in browser
+                            'as' => 'classes.'  #for the name
+                          ], function() {
 
-                          Route::get('/home', [ClassController::class,'index'])->name('classes.index');
-                          Route::get('/add', [ClassController::class,'create'])->name('classes.add');
-                          Route::post('', [ClassController::class,'store'])->name('classes.store');
+                          Route::get('home', 'index')->name('index');
+                          Route::get('add', 'create')->name('add');
+                          Route::post('', 'store')->name('store');
 
-                          Route::get('/edit/{id}', [ClassController::class,'edit'])->name('classes.edit');
-                          Route::put('/{id}', [ClassController::class,'update'])->name('classes.update');
+                          Route::get('edit/{id}', 'edit')->name('edit');
+                          Route::put('{id}', 'update')->name('update');
 
-                          Route::get('/details/{id}',[ClassController::class,'show'])->name('classes.details');
-                          Route::delete('/del/{id}', [ClassController::class,'softdel'])->name('classes.delete');
-                          Route::get('/trashed', [ClassController::class,'showDeleted'])->name('classes.trashed');
-                          Route::patch('/{id}', [ClassController::class,'restore'])->name('classes.restore');
-                          Route::delete('/{id}', [ClassController::class,'destroy'])->name('classes.destroy');
+                          Route::get('details/{id}','show')->name('details');
+                          Route::delete('del/{id}', 'softdel')->name('delete');
+                          Route::get('trashed', 'showDeleted')->name('trashed');
+                          Route::patch('{id}', 'restore')->name('restore');
+                          Route::delete('{id}', 'destroy')->name('destroy');
                         
                         
                         });
@@ -240,6 +244,19 @@ Route::get('Wlc', function () {
                            #<!------upload-------¡> 
                            Route::get('uploadFile', [ExampleController::class,'uploadFile']);
                            Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
+
+
+
+                         #<!------Fashion-------¡> 
+                         Route::group([
+                            'prefix' => 'fashion',  #for the uri
+                            'controller' => ExampleController::class,  #then we'll del the [] from the pages that open in browser
+                            'as' => 'fashion.'  #for the name
+                          ], function() {
+
+                          Route::get('home', 'index')->name('index');
+
+                         });
 
 
 

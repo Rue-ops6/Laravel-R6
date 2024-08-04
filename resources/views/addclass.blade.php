@@ -124,7 +124,19 @@ $suborder['begtime'] = $begtime->format('M d Y');
 } ?>  --}}
                 <label for="" class="form-label col-md-2 fw-bold">To: <input type="time" class="form-control" name="endTime"></label> {{--type="time"    ¡do not wait for the cursor to change into the writing integrator-wise, just use the num-tab! + the up n down for AM & PM--}}
               </div>
-            
+              <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input 
+            type="file" 
+            id="image" 
+            class="form-control"  
+            name="image">
+              @error('image')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+            </div>
+          </div>
             <hr>
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"

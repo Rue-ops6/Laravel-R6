@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Traits\Common;
 
 class CarController extends Controller
 {
+    use Common;
     /*    #1)
      * Display a listing of the resource.
      */
@@ -41,12 +43,15 @@ class CarController extends Controller
       
 #validation:
 $data = $request->validate([
-    'title' => "required|string",
-    'desc' => "required|string|max:1000",
+    'carTitle' => "required|string",
+    'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
+    'image' => "required|mimes:png,jpg,jpeg|max:2048",
 ]);
 
 $data['pub'] = isset($request->pub); 
+$data['image'] = $this->uploadFile($request->image,"assets/images"); 
+
 #dd($data);
 
 
@@ -65,12 +70,12 @@ if(isset($request->pub)){
     $pub = false;    
 }
 l2n isset bs 4aila el values true w false keda keda*/
-$data = [
+/*$data = [
     'carTitle' => $request->title, #'key' from db migration => $value -> gi mn form frontend-.
     'description' => $request->desc,
     'price' => $request->price,
     'pub' => isset($request->pub),
-];
+];*/
 
             Car::create($data);
      /*Car::create([
@@ -122,21 +127,26 @@ $data = [
 
         #validation:
 $data = $request->validate([
-    'title' => "required|string",
-    'desc' => "required|string|max:1000",
+    'carTitle' => "required|string",
+    'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
+    'image' => "sometime|mimes:png,jpg,jpeg|max:2048",
+
 ]);
 
 $data['pub'] = isset($request->pub); 
+if($request->hasFile('image')) {
+$data['image'] = $this->uploadFile($request->image,"assets/images"); 
+}
 #dd($data);
 
         //$request ==> data to be updated
-    $data = [
+    /*$data = [
         'carTitle' => $request->title, #'key' from db migration => $value -> gi mn form frontend-.
         'description' => $request->desc,
         'price' => $request->price,
         'pub' => isset($request->pub),
-    ];
+    ];*/
 
                     //zi fi sql lw sebtaha hi3mel update * fa lazem a2wl where el class id =$id ell d5lto
     car::where('id',$id)->update($data);

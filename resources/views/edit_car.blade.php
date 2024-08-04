@@ -32,8 +32,8 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Car Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="BMW" class="form-control py-2"  name="title"   value="{{old('carTitle', $car->carTitle)}}"/>
-              @error('title')
+              <input type="text" placeholder="BMW" class="form-control py-2"  name="carTitle"   value="{{old('carTitle', $car->carTitle)}}"/>
+              @error('carTitle')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
@@ -50,10 +50,21 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Description:</label>
             <div class="col-md-10">
-              <textarea id="" cols="30" rows="5" placeholder="Test" class="form-control py-2"  name="desc">{{old('description', $car->description)}}</textarea>
-              @error('desc')
+              <textarea id="" cols="30" rows="5" placeholder="Test" class="form-control py-2"  name="description">{{old('description', $car->description)}}</textarea>
+              @error('description')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
+            </div>
+          </div>
+          <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input type="file" id="image" class="form-control"  name="image"  value="{{old('image', $car->image)}}"  >
+              @error('image')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+              
+              <img src="{{asset('assets/images/'.$car->image)}}" alt=""  style="max-width: 500px">
             </div>
           </div>
           <hr>

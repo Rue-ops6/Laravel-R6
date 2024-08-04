@@ -47,4 +47,15 @@ class ExampleController extends Controller
         return 'Uploaded';
     }
 
+
+
+
+
+    public function index() {
+        /* get all cars from db '
+        return view all cars, cars data
+        select * from cars = Car::get();*/
+        return view('fashiondex');
+    }
+
 }

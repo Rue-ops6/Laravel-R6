@@ -29,8 +29,8 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Car Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="BMW" class="form-control py-2"  value="{{old('title')}}"  name="title" />
-              @error('title')
+              <input type="text" placeholder="BMW" class="form-control py-2"  value="{{old('catTitle')}}"  name="carTitle" />
+              @error('carTitle')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
@@ -47,8 +47,17 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Description:</label>
             <div class="col-md-10">
-              <textarea id="" cols="30" rows="5" class="form-control py-2"  name="desc">{{old('desc')}}</textarea>
-              @error('desc')
+              <textarea id="" cols="30" rows="5" class="form-control py-2"  name="description">{{old('description')}}</textarea>
+              @error('description')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+            </div>
+          </div>         
+          <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input type="file" id="image" class="form-control" value="{{old('image')}}"  name="image">
+              @error('image')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>

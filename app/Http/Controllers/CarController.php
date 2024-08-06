@@ -130,7 +130,7 @@ $data = $request->validate([
     'carTitle' => "required|string",
     'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
-    'image' => "sometime|mimes:png,jpg,jpeg|max:2048",
+    'image' => "sometimes|mimes:png,jpg,jpeg|max:2048",
 
 ]);
 

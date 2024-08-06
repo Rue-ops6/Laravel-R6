@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;  #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ProdController;
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -250,7 +251,7 @@ Route::get('Wlc', function () {
                          #<!------Fashion-------¡> 
                          Route::group([
                             'prefix' => 'fashion',  #for the uri
-                            'controller' => ExampleController::class,  #then we'll del the [] from the pages that open in browser
+                            'controller' => ProdController::class,  #then we'll del the [] from the pages that open in browser
                             'as' => 'fashion.'  #for the name
                           ], function() {
 

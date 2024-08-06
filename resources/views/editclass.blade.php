@@ -24,12 +24,15 @@
     <div class="container my-5">
       <div class="bg-light p-5 rounded">
         <h2 class="fw-bold fs-2 mb-5 pb-2">Update Class</h2>
-        <form action="" method="POST" class="px-md-5"  enctype="multipart/form-data">
+        <form action="{{route('classes.update', $class->id)}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
           @csrf
+          @method('put')
+          <!-- {-- @method('put') = <input type="hidden" name="id" value="{{ $class->id }}">
+<input type="submit" value="update"> --} -->
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Class Title:</label>
             <div class="col-md-10">
-              <input type="text" placeholder="Calculus" class="form-control py-2"  name="title"   value="{{$class['classTitle']}}"/>
+              <input type="text" placeholder="Calculus" class="form-control py-2"  name="classTitle"   value="{{$class['classTitle']}}"/>
             </div>
           </div>
           <div class="form-group mb-3 row">
@@ -56,6 +59,18 @@
             <label for="" class="form-label"><input type="time" placeholder="Enter endTime" class="form-control" name="endTime"   value="{{$class['endTime']}}"></label> 
             </div>
           </div>
+          <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input type="file" id="image" class="form-control"  name="image"  value="{{$class->image}}"  >
+              @error('image')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+              <img src="{{asset('assets/images/'.$class->image)}}" alt="class-image"
+              style="max-width: 500px">
+
+            </div>
+          </div>
           <hr>
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Is Fulled:</label>
@@ -65,7 +80,7 @@
           </div>
           <div class="text-md-end">
             <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-              Update car
+              Update class
             </button>
           </div>
         </form>

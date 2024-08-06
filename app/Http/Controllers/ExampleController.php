@@ -35,7 +35,25 @@ class ExampleController extends Controller
         return view('result', compact('data'));
     }
 
+//upload file
+    public function uploadFile() {
+        return view('uploadFile');
+    }
+    public function uploadimg(Request $request){
+        $file_extension = $request->image->getClientOriginalExtension();
+        $file_name = time() . '.' . $file_extension;
+        $path = 'assets/images';
+        $request->image->move($path, $file_name);
+        return 'Uploaded';
+    }
 
 
+
+
+
+    public function index() {
+    
+        
+    }
 
 }

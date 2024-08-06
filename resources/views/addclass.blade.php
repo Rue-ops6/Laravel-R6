@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="container my-5">
         <div class="bg-light p-5 rounded">
           <h2 class="fw-bold fs-2 mb-5 pb-2">Add Class</h2>
-          <form action="{{route('classes')}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
+          <form action="{{route('classes.store')}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"
@@ -107,20 +107,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
               </div>
             </div>
             <div class="form-group mb-3 row">
-              <label for="" class="form-label col-md-2 fw-bold text-md-end"
-                >Time:</label
-              >
-              <div class="col-md-10">
-                <label for="" class="form-label">From <input type="time" class="form-control" name="begTime" {{ $info['begTime']->format('h : i A') }}></label> <!--{{$date = date_create($class['begTime'])}}; . {{date_format($date, "h : i A")}}; -->
-
- <!-- <$?php if (!Page.IsPostBack) {
-  for (int begTime = 0; begTime < 24; begTime++) {
-      ddlhrs.Items.Add((begTime + 1).ToString());
-  }
-} ?>  -->
-                <label for="" class="form-label">To <input type="time" class="form-control" name="endTime"></label> <!--type="time"    ¡do not wait for the cursor to change into the writing integrator-wise, just use the num-tab! + the up n down for AM & PM-->
-              </div>
+              <label for="" class="form-label col-md-2 fw-bold text-md-end">Time: </label>
             </div>
+
+              <div class="form-group mb-3 row">
+                <label for="" class="form-label col-md-2 fw-bold">From: <input type="time" class="form-control  py-2" name="begTime" ></label> {{--{{ ['begTime']->format('h : i A') }}  --  {{$date = date_create($class['begTime'])}}; . {{date_format($date, "h : i A")}}; --}}
+              
+{{-- format date usingcarbon:
+$createdAt = Carbon::parse($class['begtime']); 
+$suborder['begtime'] = $begtime->format('M d Y');
+
+<$?php if (!Page.IsPostBack) {
+ for (int begTime = 0; begTime < 24; begTime++) {
+     ddlhrs.Items.Add((begTime + 1).ToString());
+ }
+} ?>  --}}
+                <label for="" class="form-label col-md-2 fw-bold">To: <input type="time" class="form-control" name="endTime"></label> {{--type="time"    ¡do not wait for the cursor to change into the writing integrator-wise, just use the num-tab! + the up n down for AM & PM--}}
+              </div>
+              <div class="form-group mb-3 row">
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <div class="col-md-10">
+            <input 
+            type="file" 
+            id="image" 
+            class="form-control"  
+            name="image">
+              @error('image')
+              <div class="alert alert-warning">{{$message}}</div>
+              @enderror
+            </div>
+          </div>
             <hr>
             <div class="form-group mb-3 row">
               <label for="" class="form-label col-md-2 fw-bold text-md-end"

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;  #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ProdController;
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -195,34 +196,78 @@ Route::get('Wlc', function () {
 
 
                           #<!------Cars-------¡>                              
+                          Route::prefix('cars')->group(function() {
 
-                          Route::get('addcars', [CarController::class,'create'])->name('add');
-                          Route::post('cars', [CarController::class,'store'])->name('cars');
-                          Route::get('carhome', [CarController::class,'index'])->name('home');
-                          Route::get('cars/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::get('/home', [CarController::class,'index'])->name('cars.index');
+                          Route::get('/add', [CarController::class,'create'])->name('cars.add');
+                          Route::post('', [CarController::class,'store'])->name('cars.store');
 
-                          Route::post('cars/{id}', [CarController::class,'update'])->name('cars.update');
-                          Route::get('cars/{id}/delete', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::get('{id}/edit', [CarController::class,'edit'])->name('cars.edit');
+                          Route::put('/{id}', [CarController::class,'update'])->name('cars.update');
+
+                          Route::get('/details/{id}',[CarController::class,'show'])->name('cars.details');
+                          Route::get('/del/{id}', [CarController::class,'softdel'])->name('cars.delete');
+                          Route::get('/trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
+                          Route::patch('/{id}', [CarController::class,'restore'])->name('cars.restore');
+                          Route::delete('/{id}', [CarController::class,'destroy'])->name('cars.destroy');
+                          
+                        
+                        });
+                          #Route::resources('cars', [CarController::class]);
 
                           #<!------classes-------¡>                              
+                          Route::group([
+                            'prefix' => 'classes',  #for the uri
+                            'controller' => ClassController::class,  #then we'll del the [] from the pages that open in browser
+                            'as' => 'classes.'  #for the name
+                          ], function() {
 
-                          Route::get('addclass', [ClassController::class,'create'])->name('add');
-                          Route::post('classes', [ClassController::class,'store'])->name('classes');
-                          Route::get('classhome', [ClassController::class,'index'])->name('home');
-                          Route::get('classes/{id}', [ClassController::class,'edit'])->name('classes.edit');
+                          Route::get('home', 'index')->name('index');
+                          Route::get('add', 'create')->name('add');
+                          Route::post('', 'store')->name('store');
 
-                          Route::post('classes/{id}', [ClassController::class,'update'])->name('classes.update');
-                          Route::get('classes/{id}/delete', [ClassController::class,'destroy'])->name('classes.destroy');
-                          
+                          Route::get('edit/{id}', 'edit')->name('edit');
+                          Route::put('{id}', 'update')->name('update');
+
+                          Route::get('details/{id}','show')->name('details');
+                          Route::delete('del/{id}', 'softdel')->name('delete');
+                          Route::get('trashed', 'showDeleted')->name('trashed');
+                          Route::patch('{id}', 'restore')->name('restore');
+                          Route::delete('{id}', 'destroy')->name('destroy');
+                        
+                        
+                        });
+                          #Route::resources('classes', [ClassController::class]);
+
+                          #<!------Validation-------¡> 
 
 
-                          #<!------Validation?-------¡>                              
+                           #<!------upload-------¡> 
+                           Route::get('uploadFile', [ExampleController::class,'uploadFile']);
+                           Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
 
-                          #<!------Task5-------¡>                              
 
-                          #<!------Task4-------¡>                              
-                        Route::get('addcars', [CarController::class,'create'])->name('add');
-                        Route::post('carz', [CarController::class,'store'])->name('carz');
+
+                         #<!------Fashion-------¡> 
+                         Route::group([
+                            'prefix' => 'fashion',  #for the uri
+                            'controller' => ProdController::class,  #then we'll del the [] from the pages that open in browser
+                            'as' => 'fashion.'  #for the name
+                          ], function() {
+
+                          Route::get('home', 'index')->name('index');
+
+                         });
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class ClassData extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'classes';  // 3l4an lw kont 3amla esm Classdata w migration clazzs fa a2ol table db esmha clazzs l2nha m4 gm3 Classdata fm4 hishofa
     protected $fillable = [
         'classTitle',
@@ -16,6 +18,7 @@ class ClassData extends Model
         'price',
         'begTime',
         'endTime',
+        'image',
         ];
 
 }

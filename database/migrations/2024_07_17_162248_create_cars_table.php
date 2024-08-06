@@ -17,6 +17,10 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->boolean('pub');
+            
+            $table->string('image', 250);
+
+            $table->softDeletes();            
             $table->timestamps();
         });
     }

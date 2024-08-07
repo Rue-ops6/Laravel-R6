@@ -31,7 +31,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{route('cars.index')}}">All Cars</a>
           <a class="dropdown-item" href="{{route('cars.add')}}">Insert Cars</a>
-          <a class="dropdown-item" href="{{route('cars.edit')}}">Up-2-date Cars</a>
           <a class="dropdown-item" href="{{route('cars.trashed')}}">Trashed Cars</a>
         </div>
       </li>

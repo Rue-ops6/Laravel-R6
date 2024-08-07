@@ -48,8 +48,6 @@
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="{{route('cars.add')}}">+++ classes</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="{{route('cars.edit')}}">Up-2-date classes</a></li>
-                    <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="{{route('cars.trashed')}}">Trashed classes</a></li>
                     <li><hr class="dropdown-divider" /></li>
                   </ul>

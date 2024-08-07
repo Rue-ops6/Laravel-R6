@@ -252,10 +252,12 @@ Route::get('Wlc', function () {
                          Route::group([
                             'prefix' => 'fashion',  #for the uri
                             'controller' => ProdController::class,  #then we'll del the [] from the pages that open in browser
-                            'as' => 'fashion.'  #for the name
+                            'as' => 'prod-'  #for the name
                           ], function() {
 
-                          Route::get('home', 'index')->name('index');
+                          Route::get('home', 'LatestProds')->name('index');
+                          Route::get('add', 'create')->name('add');
+                          Route::post('', 'store')->name('store');
 
                          });
 

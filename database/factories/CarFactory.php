@@ -17,13 +17,11 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-
-            'carTitle'
-            'description'
-            'price'
-            'image'
-            'pub'
-
+            'carTitle' => fake()->randomElement(['BMW', 'Mercedes', 'Fiat Tipo']),
+            'description' => fake()->text(),
+            'price' => fake()->randomFloat(2),
+            'pub' => fake()->numberBetween(0, 1),
+            'image' => fake()->image(public_path('assets/images/cars')),
         ];
     }
 }

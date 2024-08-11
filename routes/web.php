@@ -198,18 +198,18 @@ Route::get('Wlc', function () {
                           #<!------Cars-------¡>                              
                           Route::prefix('cars')->group(function() {
 
-                          Route::get('/home', [CarController::class,'index'])->name('cars.index');
-                          Route::get('/add', [CarController::class,'create'])->name('cars.add');
+                          Route::get('home', [CarController::class,'index'])->name('cars.index');
+                          Route::get('add', [CarController::class,'create'])->name('cars.add');
                           Route::post('', [CarController::class,'store'])->name('cars.store');
 
-                          Route::get('{id}/edit', [CarController::class,'edit'])->name('cars.edit');
-                          Route::put('/{id}', [CarController::class,'update'])->name('cars.update');
+                          Route::get('edit/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::put('{id}', [CarController::class,'update'])->name('cars.update');
 
-                          Route::get('/details/{id}',[CarController::class,'show'])->name('cars.details');
-                          Route::get('/del/{id}', [CarController::class,'softdel'])->name('cars.delete');
-                          Route::get('/trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
-                          Route::patch('/{id}', [CarController::class,'restore'])->name('cars.restore');
-                          Route::delete('/{id}', [CarController::class,'destroy'])->name('cars.destroy');
+                          Route::get('details/{id}',[CarController::class,'show'])->name('cars.details');
+                          Route::get('del/{id}', [CarController::class,'softdel'])->name('cars.delete');
+                          Route::get('trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
+                          Route::patch('{id}', [CarController::class,'restore'])->name('cars.restore');
+                          Route::delete('{id}', [CarController::class,'destroy'])->name('cars.destroy');
                           
                         
                         });
@@ -242,23 +242,13 @@ Route::get('Wlc', function () {
                           #<!------Validation-------¡> 
 
 
-                           #<!------upload-------¡> 
+                           #<!------upload file-------¡> 
                            Route::get('uploadFile', [ExampleController::class,'uploadFile']);
                            Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
 
 
-
-                         #<!------Fashion-------¡> 
-                         Route::group([
-                            'prefix' => 'fashion',  #for the uri
-                            'controller' => ProdController::class,  #then we'll del the [] from the pages that open in browser
-                            'as' => 'fashion.'  #for the name
-                          ], function() {
-
-                          Route::get('home', 'index')->name('index');
-
-                         });
-
+                           #<!------DB relations-------¡> 
+                           Route::get('one2one', [ExampleController::class,'DBrelations'])->name('1-1');
 
 
 

@@ -147,6 +147,7 @@ if($request->hasFile('image')) {
 #dd($data);
 
 
+
         //$request ==> data to be updated
        /* $data = [
             'classTitle' => $request->classTitle, #'key' from db migration => $value -> gi mn form frontend-.

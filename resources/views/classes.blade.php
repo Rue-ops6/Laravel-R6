@@ -17,6 +17,9 @@
 </head>
 
 <body>
+@include('includes.NAVclass')
+
+
   <main>
     <div class="container my-5">
       <div class="bg-light p-5 rounded">

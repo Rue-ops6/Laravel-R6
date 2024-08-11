@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Traits\Common;
+use App\Models\Cat;
 
 class CarController extends Controller
 {
@@ -28,8 +29,9 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
-            return view('add_car');
+        #DB relation
+        $cats = Cat::select('id', 'cat_nom')->get();
+            return view('add_car', compact ('cats'));
         }
 
 

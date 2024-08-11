@@ -16,6 +16,6 @@ class Cat extends Model
 
 
         public function student() {
-            return $this->hasOne(Car::class, 'catID');
+            return $this->hasMany(Car::class, 'catID');
         }
 }

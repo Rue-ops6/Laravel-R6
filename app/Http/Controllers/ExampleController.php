@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Models\Phone;
+use Illuminate\Support\Facades\DB;
+
 
 class ExampleController extends Controller
 {
@@ -50,10 +54,13 @@ class ExampleController extends Controller
 
 
 
-
-    public function index() {
-    
-        
+     #<!------DB relations-------¡> 
+    public function DBrelations() {
+    #dd(Student::find(1)?->phone->phone_num);     
+    dd(DB::table('students')
+    ->join('phones', 'phones.id', '=', 'students.phoneID')
+    ->where('students.id', '=', 1)
+    ->first());
     }
 
 }

@@ -247,7 +247,8 @@ Route::get('Wlc', function () {
                            Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
 
 
-
+                           #<!------DB relations-------¡> 
+                           Route::get('one2one', [ExampleController::class,'DBrelations'])->name('1-1');
 
 
 

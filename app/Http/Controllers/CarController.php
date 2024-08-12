@@ -48,11 +48,14 @@ $data = $request->validate([
     'carTitle' => "required|string",
     'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
+
     'image' => "required|mimes:png,jpg,jpeg|max:2048",
+    'catID' => "required|integer",  //or cat_nom
 ]);
 
 $data['pub'] = isset($request->pub); 
 $data['image'] = $this->uploadFile($request->image,"assets/images"); 
+// $data['catID'] = isset($request->catID); 
 
 #dd($data);
 
@@ -111,9 +114,11 @@ l2n isset bs 4aila el values true w false keda keda*/
     {
 
         $car=Car::findOrFail($id);
+        $cats = Cat::findOrFail('id', 'cat_nom')->get();
+
         // dd($car);
             #return "car = " . $id;
-        return view('edit_car', compact ('car'));
+        return view('edit_car', compact ('car', 'cats'));
         // return  $car['id'];
 
     }
@@ -132,8 +137,9 @@ $data = $request->validate([
     'carTitle' => "required|string",
     'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
-    'image' => "sometimes|mimes:png,jpg,jpeg|max:2048",
 
+    'image' => "sometimes|mimes:png,jpg,jpeg|max:2048",
+    'catID' => "required|integer", 
 ]);
 
 $data['pub'] = isset($request->pub); 

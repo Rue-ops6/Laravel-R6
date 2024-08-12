@@ -63,11 +63,12 @@
                 <option value="{{$cat->id}}">{{$cat->cat_nom}}</option>
                 @endforeach
               </select>
-              @error('price')
+              @error('cat')
                 <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
-          </div>      
+          </div>  
+              
           <div class="form-group mb-3 row">
             <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
             <div class="col-md-10">

@@ -41,6 +41,11 @@
               </div>
               <div class="mb-4">
                 <p class="card-text">
+                  <span class="fw-bold">Category:</span><br>{{$car->cat->cat_nom}}
+                </p>
+              </div>              
+              <div class="mb-4">
+                <p class="card-text">
                   <span class="fw-bold">Description:</span><br>{{$car->description}}
                 </p>
               </div>

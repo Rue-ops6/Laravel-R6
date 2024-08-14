@@ -196,7 +196,7 @@ Route::get('Wlc', function () {
 
 
                           #<!------Cars-------¡>                              
-                          Route::prefix('cars')->group(function() {
+                          Route::prefix('cars')->middleware('verified')->group(function() {
 
                           Route::get('home', [CarController::class,'index'])->name('cars.index');
                           Route::get('add', [CarController::class,'create'])->name('cars.add');
@@ -219,7 +219,8 @@ Route::get('Wlc', function () {
                           Route::group([
                             'prefix' => 'classes',  #for the uri
                             'controller' => ClassController::class,  #then we'll del the [] from the pages that open in browser
-                            'as' => 'classes.'  #for the name
+                            'as' => 'classes.',  #for the name
+                            'middleware' => 'verified',
                           ], function() {
 
                           Route::get('home', 'index')->name('index');
@@ -248,7 +249,7 @@ Route::get('Wlc', function () {
 
 
                            #<!------DB relations-------¡> 
-                           Route::get('one2one', [ExampleController::class,'DBrelations'])->name('1-1');
+                           Route::get('one2one', [ExampleController::class,'DBrelations'])->name('1-1')->middleware('verified');
 
 
 
@@ -263,3 +264,6 @@ Route::get('Wlc', function () {
 
 
                         
+Auth::routes(['verify' => true]);  #to use it:    ->middleware('verified')
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

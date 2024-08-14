@@ -57,13 +57,13 @@
           <div class="form-group mb-3 row">
             <label for="" class="form-label col-md-2 fw-bold text-md-end">Category:</label>
             <div class="col-md-10">
-              <select name="cat" id="" class="form-control">
+              <select name="catID" id="" class="form-control">
                 <option value="">Select Category</option>
                 @foreach ($cats as $cat)
-                <option value="{{$cat->id}}">{{$cat->cat_nom}}</option>
+                <option value="{{$cat->id}}" @selected(old('catID') == $cat->id)>{{$cat->cat_nom}}</option>
                 @endforeach
               </select>
-              @error('cat')
+              @error('catID')
                 <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>

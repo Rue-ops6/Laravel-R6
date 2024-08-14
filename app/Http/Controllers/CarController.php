@@ -50,7 +50,7 @@ $data = $request->validate([
     'price' => "required|decimal:1",
 
     'image' => "required|mimes:png,jpg,jpeg|max:2048",
-    'catID' => "required|integer",  //or cat_nom
+    'catID' => "required|exists:cats,id",  
 ]);
 
 $data['pub'] = isset($request->pub); 
@@ -100,8 +100,10 @@ l2n isset bs 4aila el values true w false keda keda*/
      */
     public function show(string $id)
     {
-        $car=Car::findOrFail($id);
-        
+                        #$car=Car::findOrFail($id);
+                        $car=Car::with('cat')->findOrFail($id);
+                        #$data['image'] = $this->uploadFile($request->image,"assets/images"); 
+                        #dd($car);
         return view('details_car',compact('car'));
         }
 
@@ -114,10 +116,10 @@ l2n isset bs 4aila el values true w false keda keda*/
     {
 
         $car=Car::findOrFail($id);
-        $cats = Cat::findOrFail('id', 'cat_nom')->get();
+        $cats = Cat::select('id', 'cat_nom')->get();
 
-        // dd($car);
-            #return "car = " . $id;
+        //dd($car->all());
+                    #return "car = " . $id;
         return view('edit_car', compact ('car', 'cats'));
         // return  $car['id'];
 

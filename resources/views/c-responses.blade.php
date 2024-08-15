@@ -1,9 +1,27 @@
+<!-- 1)) 
+ <x-mail::message>  or <x-mail::button :url="$url" color="success">
+# Order Shipped
+Your order has been shipped!
+<x-mail::button :url="$url">
+View Order
+</x-mail::button>
+Thanks,<br>
+{{ config('app.name') }}
+</x-mail::message>  or </x-mail::button>   
+
+2)) <x-mail::table>
+| Laravel       | Table         | Example       |
+| ------------- | :-----------: | ------------: |
+| Col 2 is      | Centered      | $10           |
+| Col 3 is      | Right-Aligned | $20           |
+</x-mail::table>
+-->
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resulted Info.</title>
+    <title>Contact us responses</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,7 +30,7 @@
 <body style="background-image: linear-gradient(90deg, #b743ae, #ed429e);">
     <div class="container my-5">
         <div class="py-5 px-md-5 px-1 rounded-1 mx-md-5" style="background-color: #fffffff2;">
-            <h2 class="fw-bold fs-1 mb-3 pb-2 text-center">Resulted Info.</h2>
+            <h2 class="fw-bold fs-1 mb-3 pb-2 text-center">Emails</h2>
             <div class="form-group mb-3 row">
                 <label class="form-label col-md-2 fw-bold text-md-end">Name:</label>
                 <div class="col-md-10">
@@ -22,7 +40,7 @@
             <div class="form-group mb-3 row">
                 <label class="form-label col-md-2 fw-bold text-md-end">Email:</label>
                 <div class="col-md-10">
-                    <p>{{ $data['email'] }}</p>
+                    <p>{{ $order->address }}</p>
                 </div>
             </div>
             <div class="form-group mb-3 row">

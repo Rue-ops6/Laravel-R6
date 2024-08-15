@@ -5,6 +5,7 @@ use App\Http\Controllers\ExampleController;  #the brain where to put the actions
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ProdController;
+use App\Http\Controllers\EmailController;
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -185,12 +186,12 @@ Route::get('Wlc', function () {
 
                           #<!------Task3-------¡>                              
 
-                          Route::get('contactus', [ExampleController:: class, 'contactus']);  //using controller
+                          Route::get('contactus', [EmailController:: class, 'contactus']);  //using controller
                         /*Route::get('contactus', function () {
                         return view('contactus');
                         });*/
-                        Route::post('info', [ExampleController::class, 'info'])->name('info'); 
-                        Route::get('result', [ExampleController::class, 'result'])->name('result'); 
+                        Route::post('data', [EmailController::class, 'data'])->name('data'); 
+                        Route::get('responses', [EmailController::class, 'responses'])->name('c-responses'); 
 
 
 

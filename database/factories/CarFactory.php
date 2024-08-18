@@ -9,32 +9,27 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CarFactory extends Factory
 {
+    private function generateRandomImage($path)
+    {
+        $files = scandir($path);
+        $files = array_diff($files, array('.', '..'));
+        return fake()->randomElement($files);
+    }
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-
-
-    private function generateRandomImage($path)
-    {
-        $files = scandir($path);
-        $files = array_diff($files, array('.', '..'));
-
-        return fake()->randomElement($files);
-    }
-
-
     public function definition(): array
     {
         return [
-            'carTitle' => fake()->randomElement(['BMW', 'Mercedes', 'Fiat Tipo']),
+            'carTitle' => fake()->randomElement(['BMW', 'SuprAaa', 'nobelSmart']),
             'description' => fake()->text(),
-            'price' => fake()->randomFloat(2),
+            'price' => fake()->randomFloat(1),
             'pub' => fake()->numberBetween(0, 1),
-            #'image' => basename(fake()->image(public_path('assets/images'))),
-            'image' => $this->generateRandomImage(public_path('assets/images')),
-            'catID' => fake()->numberBetween(1, 2),
+            #'image' => basename(fake()->image(public_path('assets/images/product'))),
+            'image' => $this->generateRandomImage(public_path('assets/images/')),
+            'catID' => fake()->numberBetween(1, 10),
         ];
-    }
+        }
 }

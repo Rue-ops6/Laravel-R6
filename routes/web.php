@@ -12,7 +12,7 @@ Route::get('/', function () {  #main page
 });
 
 
-/*#comment it until the project is done as it hides errors and bring us to home 
+/*#comment it until the project is done as it hides errors and bring us to home
 Route::fallback(function () {
     return redirect("/");
 });
@@ -93,7 +93,7 @@ Route::prefix('company')->group(function () {
 
 
 
-                          #<!------Task2-------¡>                              
+                          #<!------Task2-------¡>
     #1)
     Route::prefix("accounts")->group(function () {
     Route::get('', function () {
@@ -149,7 +149,7 @@ Route::prefix('ger/{type}')->group(function ($type) {
 });
 */
 
-                          #<!------view Html-------¡>                              
+                          #<!------view Html-------¡>
 
 Route::get('resume', function () {  #CV is a frontend file tht can be seen in laravel thru the engine "blade". we can find it in resources/views. Therefore it's called by only its name.
     return view('resume');
@@ -171,32 +171,32 @@ Route::post('sub', function () {
 
 
 //named route: anchor tag from page to another
-Route::get('link', function () { 
+Route::get('link', function () {
     $url1 = route('Wlc');
     $url2 = route('Co.'); //upwards around line 77
     return "<a href='$url1'> go to welcome </a> <br> <a href='$url2'> go to page </a>";
     #return "<a href='/Wlc'> go to welcome </a>";
 });
-Route::get('Wlc', function () { 
+Route::get('Wlc', function () {
     return "wlc to laravel";
 })->name('Wlc');
 
 
 
 
-                          #<!------Task3-------¡>                              
+                          #<!------Task3-------¡>
 
                           Route::get('contactus', [EmailController:: class, 'contactus']);  //using controller
                         /*Route::get('contactus', function () {
                         return view('contactus');
                         });*/
-                        Route::post('data', [EmailController::class, 'data'])->name('data'); 
-                        Route::get('responses', [EmailController::class, 'responses'])->name('c-responses'); 
+                        Route::post('data', [EmailController::class, 'data'])->name('data');
+                        Route::get('responses', [EmailController::class, 'responses'])->name('c-responses');
 
 
 
 
-                          #<!------Cars-------¡>                              
+                          #<!------Cars-------¡>
                           Route::prefix('cars')->middleware('verified')->group(function() {
 
                           Route::get('home', [CarController::class,'index'])->name('cars.index');
@@ -211,12 +211,12 @@ Route::get('Wlc', function () {
                           Route::get('trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
                           Route::patch('{id}', [CarController::class,'restore'])->name('cars.restore');
                           Route::delete('{id}', [CarController::class,'destroy'])->name('cars.destroy');
-                          
-                        
+
+
                         });
                           #Route::resources('cars', [CarController::class]);
 
-                          #<!------classes-------¡>                              
+                          #<!------classes-------¡>
                           Route::group([
                             'prefix' => 'classes',  #for the uri
                             'controller' => ClassController::class,  #then we'll del the [] from the pages that open in browser
@@ -236,23 +236,28 @@ Route::get('Wlc', function () {
                           Route::get('trashed', 'showDeleted')->name('trashed');
                           Route::patch('{id}', 'restore')->name('restore');
                           Route::delete('{id}', 'destroy')->name('destroy');
-                        
-                        
+
+
                         });
                           #Route::resources('classes', [ClassController::class]);
 
-                          #<!------Validation-------¡> 
+                          #<!------Validation-------¡>
 
 
-                           #<!------upload file-------¡> 
+                           #<!------upload file-------¡>
                            Route::get('uploadFile', [ExampleController::class,'uploadFile']);
                            Route::post('assets', [ExampleController::class,'uploadimg'])->name('uploadimg');
 
 
-                           #<!------DB relations-------¡> 
+                           #<!------DB relations-------¡>
                            Route::get('one2one', [ExampleController::class,'DBrelations'])->name('1-1')->middleware('verified');
 
 
+                           #<!------Mailing-------¡>
+                           Route::get('contactus', [ExampleController::class,'sendFrom'])->name('sendFrom')->middleware('verified');
+                           Route::get('contactus', [ExampleController::class,'sendTo'])->name('sendTo')->middleware('verified');
+
+                           
 
 
 
@@ -264,7 +269,7 @@ Route::get('Wlc', function () {
 
 
 
-                        
+
 Auth::routes(['verify' => true]);  #to use it:    ->middleware('verified')
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

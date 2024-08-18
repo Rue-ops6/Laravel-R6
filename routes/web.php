@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;  #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ProdController;
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\MailerController;
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -184,15 +183,6 @@ Route::get('Wlc', function () {
 
 
 
-                          #<!------Task3-------¡>
-
-                          Route::get('contactus', [EmailController:: class, 'contactus']);  //using controller
-                        /*Route::get('contactus', function () {
-                        return view('contactus');
-                        });*/
-                        Route::post('data', [EmailController::class, 'data'])->name('data');
-                        Route::get('responses', [EmailController::class, 'responses'])->name('c-responses');
-
 
 
 
@@ -254,10 +244,10 @@ Route::get('Wlc', function () {
 
 
                            #<!------Mailing-------¡>
-                           Route::get('contactus', [ExampleController::class,'sendFrom'])->name('sendFrom')->middleware('verified');
-                           Route::get('contactus', [ExampleController::class,'sendTo'])->name('sendTo')->middleware('verified');
+                           Route::get('contactus', [MailerController::class,'sendFrom'])->name('sendFrom');
+                           Route::post('contactus', [MailerController::class,'sendTo'])->name('sendTo');
 
-                           
+
 
 
 

@@ -4,31 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mailer\ContactMailer;
 use App\Mail\OrderShipped;
-use App\Models\Email;
+use App\Models\Mailer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
- 
 
-class EmailController extends Controller
+
+class MailerController extends Controller
 {
-    function contactus() {
+    function sendFrom() {
         return view('contactus');
     }//->where(["name" => "[A-Za-z]+"]);
 
 #facade //use Illuminate\Http\Request;
-    public function data(Request $request): RedirectResponse
+    public function sendTo(Request $request)   #request for the method POST
     {
         #dd(info);
-        $order = Email::findOrFail($request->order_id);
-        // $data = $request->all(); #$request; 
+        $data = $request->except('_token');
+        // dd($data);
+        Mail::to('test@example.com')->send(new ContactMailer($data));
+                return "Msg sent successfuly";
+    }
+}
+
+        /*::findOrFail($request->order_id);
+        // $data = $request->all(); #$request;
 
         session(['formData' => $data]);// Store the data in the session instead of the database nor cookies as there is no pwd n it's more secured
 
         return redirect()->route('c-responses');
 
                 // Ship the order...
- 
+
                 Mail::to($request->user())->send(new OrderShipped($order));
     ->cc($moreUsers)
     ->bcc($evenMoreUsers)
@@ -39,24 +47,21 @@ class EmailController extends Controller
     $message = (new OrderShipped($order))
                 ->onConnection('sqs')
                 ->onQueue('emails');
- 
+
 Mail::to($request->user())
     ->cc($moreUsers)
     ->bcc($evenMoreUsers)
     ->queue($message);
-                
+
                 return redirect('/orders');
             }
-    
+
     // Retrieve the stored data from the session
     public function responses() {
         $data = session('formData');
         return view('c-responses', compact('data'));
     }
-
-
-
-}
+}*/
 
 
 

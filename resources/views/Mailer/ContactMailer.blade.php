@@ -1,23 +1,3 @@
-<!-- 1)) 
- <x-mail::message>  or <x-mail::button :url="$url" color="success">
-# Order Shipped
-Your order has been shipped!
-<x-mail::button :url="$url">
-View Order
-</x-mail::button>
-Thanks,<br>
-{{ config('app.name') }}
-</x-mail::message>  or </x-mail::button>   
-
-2)) <x-mail::table>
-| Laravel       | Table         | Example       |
-| ------------- | :-----------: | ------------: |
-| Col 2 is      | Centered      | $10           |
-| Col 3 is      | Right-Aligned | $20           |
-</x-mail::table>
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,19 +20,19 @@ Thanks,<br>
             <div class="form-group mb-3 row">
                 <label class="form-label col-md-2 fw-bold text-md-end">Email:</label>
                 <div class="col-md-10">
-                    <p>{{ $order->address }}</p>
+                    <p>{{ $data['email'] }}</p>
                 </div>
             </div>
             <div class="form-group mb-3 row">
                 <label class="form-label col-md-2 fw-bold text-md-end">Subject:</label>
                 <div class="col-md-10">
-                    <p>{{ $data['sub'] }}</p>
+                    <p>{{ $data['subject'] }}</p>
                 </div>
             </div>
             <div class="form-group mb-3 row">
                 <label class="form-label col-12 fw-bold">Message:</label>
                 <div class="col-12">
-                    <p>{{ $data['msg'] }}</p>
+                    <p>{{ $data['message'] }}</p>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
     <div class="container my-5">
         <div class="py-5 px-md-5 px-1  rounded-1 mx-md-5" style="background-color: #fffffff2;">
             <h2 class="fw-bold fs-1 mb-3 pb-2 text-center">Contact Us</h2>
-            <form action="{{route('c-responses')}}" method="POST">
+            <form action="{{route('sendTo')}}" method="POST">
             @csrf
             <!-- <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" /> --> <!--csrf field-->
             <!-- <input type="hidden" name="info" value="<#?php echo $info ?>"> -->
@@ -49,14 +49,14 @@
                 <div class="form-group mb-3 row">
                     <label for="" class="form-label col-md-2 fw-bold text-md-end">Subject:</label>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Enter subject" class="form-control py-2"    name="sub"/>
+                        <input type="text" placeholder="Enter subject" class="form-control py-2"    name="subject"/>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group mb-3 row">
                     <label for="" class="form-label col-12 fw-bold">Message:</label>
                     <div class="col-12">
-                        <textarea id="" class="form-control" rows="8" style="padding: 0.7rem;"    name="msg"></textarea>
+                        <textarea id="" class="form-control" rows="8" style="padding: 0.7rem;"    name="message"></textarea>
                     </div>
                 </div>
                 <div class="mb-3">

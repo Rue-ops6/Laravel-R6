@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Mailer\ContactMailer;
+use App\Mail\ContactMailer;
 use App\Mail\OrderShipped;
 use App\Models\Mailer;
 use Illuminate\Http\RedirectResponse;

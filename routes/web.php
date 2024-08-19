@@ -183,9 +183,6 @@ Route::get('Wlc', function () {
 
 
 
-
-
-
                           #<!------Cars-------¡>
                           Route::prefix('cars')->middleware('verified')->group(function() {
 

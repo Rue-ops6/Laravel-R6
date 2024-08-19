@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMailer;
 use App\Mail\OrderShipped;
-use App\Models\Mailer;
+use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 
 
-class MailerController extends Controller
+class ContactController extends Controller
 {
+
     function sendFrom() {
         return view('contactus');
     }//->where(["name" => "[A-Za-z]+"]);
@@ -70,3 +71,4 @@ Mail::to($request->user())
 // foreach (['taylor@example.com', 'dries@example.com'] as $recipient) {
 //     Mail::to($recipient)->send(new OrderShipped($order));
 // }
+

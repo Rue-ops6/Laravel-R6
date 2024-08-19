@@ -5,6 +5,8 @@ use App\Http\Controllers\ExampleController;  #the brain where to put the actions
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\MailerController;
+use App\Http\Controllers\ContactController;
+
 
 Route::get('/', function () {  #main page
     return view('welcome');
@@ -241,8 +243,8 @@ Route::get('Wlc', function () {
 
 
                            #<!------Mailing-------¡>
-                           Route::get('contactus', [MailerController::class,'sendFrom'])->name('sendFrom');
-                           Route::post('contactus', [MailerController::class,'sendTo'])->name('sendTo');
+                           Route::get('contactus', [ContactController::class,'sendFrom'])->name('sendFrom');
+                           Route::post('contactus', [ContactController::class,'sendTo'])->name('sendTo');
 
 
 

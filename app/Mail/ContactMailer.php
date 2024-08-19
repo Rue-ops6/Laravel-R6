@@ -3,8 +3,10 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
+use App\Http\Controllers\ContactController;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -54,7 +56,7 @@ from: new Address($this->data['email'], $this->data['name']),
     public function content(): Content
     {
         return new Content(
-            view: 'mail.contactMail',
+            view: 'Mailer.ContactMailer',
         );
         /*we did it as public, thus it's not necesary            with: [
                 'data' => $this->data,

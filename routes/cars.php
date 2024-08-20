@@ -9,8 +9,9 @@ use App\Http\Middleware\EnsureTokenIsValid;
 #namespace Illuminate\Session\Middleware;
 use App\Http\Middleware\TerminatingMiddleware;
 
-Route::get('/', function () {  #main page
-    return view('welcome');
+Route::get('/carsweb', function () {  #main page
+    #return view('welcome');
+    return 'This is a cars world';
 });
 
 // protected $routeMiddleware = [
@@ -44,3 +45,11 @@ Route::get('/profile', function () {
 
                         });
                           #Route::resources('cars', [CarController::class]);
+
+
+                          #<!------Authantication  &&  Middleware-------¡>
+
+Auth::routes(['verify' => true]); #to use it:    ->middleware('verified')
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

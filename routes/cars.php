@@ -21,11 +21,16 @@ Route::get('/carsweb', function () {  #main page
 //         Route::namespace('Cars')->prefix('cars')->name('cars.')->group(base_path('routes/cars.php'));
 //     },
 // ];
-Route::get('/profile', function () {
-    //
-})->middleware(EnsureTokenIsValid::class);
 
 
+// M camara -langs
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+
+        
                           #<!------Cars-------¡>
                           Route::prefix('cars')->middleware('verified')->group(function() {
 
@@ -47,9 +52,15 @@ Route::get('/profile', function () {
                           #Route::resources('cars', [CarController::class]);
 
 
+
+
+
+
+
                           #<!------Authantication  &&  Middleware-------¡>
 
 Auth::routes(['verify' => true]); #to use it:    ->middleware('verified')
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    });
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassController; #the brain where to put the actions. We use web.php as a kobry to head us there "brain" that is why we also have to mension where is there through what looks like require_once = use, using first letters capital.
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\ExampleController;
 use Illuminate\Support\Facades\Route;
 require base_path('routes/cars.php'); #for cars other web route
@@ -48,6 +49,35 @@ Route::get('Wlc', function () {
     return "wlc to laravel";
 })->name('Wlc');
 
+
+
+/*
+Route::get('/profile', function () {
+    //
+})->middleware(EnsureTokenIsValid::class);
+                          #<!------Cars-------¡>
+                          Route::prefix('cars')->middleware('verified')->group(function() {
+
+                          Route::get('home', [CarController::class,'index'])->name('cars.index');
+                          Route::get('add', [CarController::class,'create'])->name('cars.add');
+                          Route::post('', [CarController::class,'store'])->name('cars.store');
+
+                          Route::get('edit/{id}', [CarController::class,'edit'])->name('cars.edit');
+                          Route::put('{id}', [CarController::class,'update'])->name('cars.update');
+
+                          Route::get('details/{id}',[CarController::class,'show'])->name('cars.details');
+                          Route::get('del/{id}', [CarController::class,'softdel'])->name('cars.delete');
+                          Route::get('trashed', [CarController::class,'showDeleted'])->name('cars.trashed');
+                          Route::patch('{id}', [CarController::class,'restore'])->name('cars.restore');
+                          Route::delete('{id}', [CarController::class,'destroy'])->name('cars.destroy');
+
+
+                        });
+                          #Route::resources('cars', [CarController::class]);
+                          */
+
+
+                          
 #<!------classes-------¡>
 Route::group([
     'prefix' => 'classes', #for the uri

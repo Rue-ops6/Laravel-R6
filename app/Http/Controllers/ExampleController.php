@@ -25,20 +25,23 @@ class ExampleController extends Controller
     }//->where(["name" => "[A-Za-z]+"]);
 
 #facade //use Illuminate\Http\Request;
-    public function info(Request $request){
+    public function data(Request $request){
         #dd(info);
         $data = $request->all(); #$request; 
 
         session(['formData' => $data]);// Store the data in the session instead of the database nor cookies as there is no pwd n it's more secured
 
-        return redirect()->route('result');
+        return redirect()->route('c-responses');
     }
     // Retrieve the stored data from the session
-    public function result() {
+    public function responses() {
         $data = session('formData');
-        return view('result', compact('data'));
+        return view('c-responses', compact('data'));
     }
 
+
+
+    
 //upload file
     public function uploadFile() {
         return view('uploadFile');
@@ -64,3 +67,6 @@ class ExampleController extends Controller
     }
 
 }
+
+
+

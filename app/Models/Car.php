@@ -18,7 +18,7 @@ class Car extends Model
     'catID',
     ];
 
-    public function phone() {
+    public function cat() {
         return $this->belongsTo(Cat::class, 'catID');
     }
 }

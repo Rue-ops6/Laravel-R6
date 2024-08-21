@@ -42,7 +42,7 @@ class CarController extends Controller
     public function store(Request $request)
     {
     //dd($request);
-      
+
 #validation:
 $data = $request->validate([
     'carTitle' => "required|string",
@@ -50,12 +50,12 @@ $data = $request->validate([
     'price' => "required|decimal:1",
 
     'image' => "required|mimes:png,jpg,jpeg|max:2048",
-    'catID' => "required|integer",  //or cat_nom
+    'catID' => "required|exists:cats,id",
 ]);
 
-$data['pub'] = isset($request->pub); 
-$data['image'] = $this->uploadFile($request->image,"assets/images"); 
-// $data['catID'] = isset($request->catID); 
+$data['pub'] = isset($request->pub);
+$data['image'] = $this->uploadFile($request->image,"assets/images");
+// $data['catID'] = isset($request->catID);
 
 #dd($data);
 
@@ -72,7 +72,7 @@ $data['image'] = $this->uploadFile($request->image,"assets/images");
 if(isset($request->pub)){
     $pub = true;
 }else{
-    $pub = false;    
+    $pub = false;
 }
 l2n isset bs 4aila el values true w false keda keda*/
 /*$data = [
@@ -100,8 +100,10 @@ l2n isset bs 4aila el values true w false keda keda*/
      */
     public function show(string $id)
     {
-        $car=Car::findOrFail($id);
-        
+                        #$car=Car::findOrFail($id);
+                        $car=Car::with('cat')->findOrFail($id);
+                        #$data['image'] = $this->uploadFile($request->image,"assets/images");
+                        #dd($car);
         return view('details_car',compact('car'));
         }
 
@@ -114,14 +116,15 @@ l2n isset bs 4aila el values true w false keda keda*/
     {
 
         $car=Car::findOrFail($id);
-        $cats = Cat::findOrFail('id', 'cat_nom')->get();
+        $cats = Cat::select('id', 'cat_nom')->get();
 
-        // dd($car);
-            #return "car = " . $id;
+        //dd($car->all());
+                    #return "car = " . $id;
         return view('edit_car', compact ('car', 'cats'));
         // return  $car['id'];
 
     }
+
 
 
 
@@ -139,12 +142,12 @@ $data = $request->validate([
     'price' => "required|decimal:1",
 
     'image' => "sometimes|mimes:png,jpg,jpeg|max:2048",
-    'catID' => "required|integer", 
+    'catID' => "required|integer",
 ]);
 
-$data['pub'] = isset($request->pub); 
+$data['pub'] = isset($request->pub);
 if($request->hasFile('image')) {
-$data['image'] = $this->uploadFile($request->image,"assets/images"); 
+$data['image'] = $this->uploadFile($request->image,"assets/images");
 }
 #dd($data);
 
@@ -173,7 +176,7 @@ $data['image'] = $this->uploadFile($request->image,"assets/images");
 
         // return " data delete successfully";
         return redirect()->route("cars.index");
-        }    
+        }
 
 
 
@@ -187,8 +190,8 @@ $data['image'] = $this->uploadFile($request->image,"assets/images");
         // return " data delete successfully";
         return redirect()->route("cars.trashed");
         }
-        
-        
+
+
 
     /*    #9)
      * show del.
@@ -196,12 +199,12 @@ $data['image'] = $this->uploadFile($request->image,"assets/images");
         public function showDeleted()
         {
             $cars = Car::onlyTrashed()->get();
-    
+
             // return " data delete successfully";
             return view('trashed_car', compact("cars"));
             }
             // return redirect()->route("showDeleted");
-            
+
 
 
     /*    #10)
@@ -210,12 +213,12 @@ $data['image'] = $this->uploadFile($request->image,"assets/images");
             public function restore(string $id)
         {
             Car::where("id", $id)->restore();
-    
+
             // return " data restored successfully";
-            return redirect()->route("cars.index");        
+            return redirect()->route("cars.index");
             }
 
 
 
-            
+
 }

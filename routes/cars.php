@@ -23,6 +23,8 @@ Route::get('/carsweb', function () {  #main page
 // ];
 
 
+
+/*
 // M camara -langs
 Route::group(
     [
@@ -30,7 +32,7 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
 
-        
+
                           #<!------Cars-------¡>
                           Route::prefix('cars')->middleware('verified')->group(function() {
 
@@ -55,12 +57,6 @@ Route::group(
 
 
 
+                        });
 
-
-                          #<!------Authantication  &&  Middleware-------¡>
-
-Auth::routes(['verify' => true]); #to use it:    ->middleware('verified')
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    });
-
+*/

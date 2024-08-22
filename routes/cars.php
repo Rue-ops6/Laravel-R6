@@ -24,7 +24,7 @@ Route::get('/carsweb', function () {  #main page
 
 
 
-/*
+
 // M camara -langs
 Route::group(
     [
@@ -59,4 +59,4 @@ Route::group(
 
                         });
 
-*/
+

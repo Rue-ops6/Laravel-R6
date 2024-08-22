@@ -51,7 +51,7 @@ Route::get('Wlc', function () {
 
 
 
-
+/*
 // M camara -langs
 Route::group(
     [
@@ -78,14 +78,14 @@ Route::group(
 
 
                         });
-                         
+
 
 
 
 
 
                         });
-
+*/
 
 
 

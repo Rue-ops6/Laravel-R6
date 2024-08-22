@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{LaravelLocalization::getCurrentLocale()}}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
-    
+
+
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,25 +31,25 @@
         <form action="{{route('cars.store')}}" method="POST" class="px-md-5"  enctype="multipart/form-data">
           @csrf
           <div class="form-group mb-3 row">
-            <label for="" class="form-label col-md-2 fw-bold text-md-end">Car Title:</label>
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addTitle")}} :</label>
             <div class="col-md-10">
-              <input type="text" placeholder="BMW" class="form-control py-2"  value="{{old('catTitle')}}"  name="carTitle" />
+              <input type="text" placeholder="{{__("cars.carExample")}}" class="form-control py-2"  value="{{old('catTitle')}}"  name="carTitle" />
               @error('carTitle')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
           </div>
           <div class="form-group mb-3 row">
-            <label for="" class="form-label col-md-2 fw-bold text-md-end">Price:</label>
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addPrice")}} :</label>
             <div class="col-md-10">
-              <input type="number" step="0.1" placeholder="Enter price" class="form-control py-2"  value="{{old('price')}}"  name="price"/>
+              <input type="number" step="0.1" placeholder="{{__("cars.priceExample")}}" class="form-control py-2"  value="{{old('price')}}"  name="price"/>
               @error('price')
               <div class="alert alert-warning">{{$message}}</div>
               @enderror
             </div>
           </div>
           <div class="form-group mb-3 row">
-            <label for="" class="form-label col-md-2 fw-bold text-md-end">Description:</label>
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addDesc")}} :</label>
             <div class="col-md-10">
               <textarea id="" cols="30" rows="5" class="form-control py-2"  name="description">{{old('description')}}</textarea>
               @error('description')
@@ -57,10 +59,10 @@
           </div>
 
           <div class="form-group mb-3 row">
-            <label for="" class="form-label col-md-2 fw-bold text-md-end">Category:</label>
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addCat")}} :</label>
             <div class="col-md-10">
               <select name="catID" id="" class="form-control">
-                <option value="">Select Category</option>
+                <option value="">{{__("cars.catExample")}}</option>
                 @foreach ($cats as $cat)
                 <option value="{{$cat->id}}" @selected(old('catID') == $cat->id)>{{$cat->cat_nom}}</option>
                 @endforeach
@@ -72,7 +74,7 @@
           </div>
 
           <div class="form-group mb-3 row">
-            <label for="image" class="form-label col-md-2 fw-bold text-md-end">Image:</label>
+            <label for="image" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addPic")}} :</label>
             <div class="col-md-10">
             <input type="file" id="image" class="form-control" value="{{old('image')}}"  name="image">
               @error('image')
@@ -82,14 +84,14 @@
           </div>
           <hr>
           <div class="form-group mb-3 row">
-            <label for="" class="form-label col-md-2 fw-bold text-md-end">Published:</label>
+            <label for="" class="form-label col-md-2 fw-bold text-md-end">{{__("cars.addPub")}} :</label>
             <div class="col-md-10">
               <input type="checkbox" class="form-check-input" style="padding: 0.7rem;"    value="1" @checked(old('pub'))  name="pub"/>
             </div>
           </div>
           <div class="text-md-end">
             <button class="btn mt-4 btn-secondary text-white fs-5 fw-bold border-0 py-2 px-md-5">
-              Add Car
+                {{__("cars.addFooting")}}
             </button>
           </div>
         </form>

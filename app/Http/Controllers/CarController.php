@@ -52,7 +52,7 @@ class CarController extends Controller
     ];*/
 
 $data = $request->validate([
-    'carTitle' => "required|string",
+    'carTitle' => "required|string", 
     'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
 

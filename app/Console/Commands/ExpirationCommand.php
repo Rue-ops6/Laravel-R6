@@ -12,14 +12,14 @@ class ExpirationCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:expiration-command';
+    protected $signature = 'signature:expiration';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'User-expiration after it becomes 1 = wasnt active for a while';
 
     /**
      * Execute the console command.
@@ -27,8 +27,14 @@ class ExpirationCommand extends Command
     public function handle()
     {
 
-        $users = User::where('expired', '=', 0)
+        User::where('expired', '=', 0)
         ->update(['expired' => 1]);
-        /* */
-        }
+    }
+        /* Or
+        $users = User::where('expired', '=', 0)->get();
+foreach($users as $user) {
+$user->update([
+'expired' => 1
+]);
+}        */
 }

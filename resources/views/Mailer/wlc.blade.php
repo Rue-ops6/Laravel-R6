@@ -9,12 +9,12 @@
 </head>
 
 
-<body style="background-image: linear-gradient(90deg, #c01a44, #25a68c);">
+<body style="background-image: linear-gradient(90deg, #ee274f, #42dfbf);">
     <main>
     <div class="container my-5">
         <div class="py-5 px-md-5 px-1 rounded-1 mx-md-5" style="background-color: #fffffff2;">
-            <h2 class="fw-bold fs-1 mb-3 pb-2 text-center"> Hello from Laravel 👋🏼🦝 </h2>
-             {{-- <p><i> Wlc in our LARApp</i></p> --}}
+            <h2 class="fw-bold fs-1 mb-3 pb-2 text-center"> Hello from Laravel 👋🏼🦝💗 </h2>
+             {{-- <p><i> Wlc in our LARApp ! </i></p> --}}
             <i> ~ {!! \Illuminate\Foundation\Inspiring::quote() !!} </i> {{-- {!!!!} is an echo that do orders. the inseides are the use of the page --}}
             </div>
         </div>

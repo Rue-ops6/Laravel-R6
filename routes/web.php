@@ -5,7 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ExampleController;
 use Illuminate\Support\Facades\Route;
-require base_path('routes/cars.php'); #for cars other web route
+// require base_path('routes/cars.php'); #for cars other web route
 
 Route::get('/', function () { #main page
     return view('welcome');
@@ -52,11 +52,16 @@ Route::get('Wlc', function () {
 
 
 /*
-Route::get('/profile', function () {
-    //
-})->middleware(EnsureTokenIsValid::class);
+// M camara -langs
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+
+
                           #<!------Cars-------¡>
-                          Route::prefix('cars')->middleware('verified')->group(function() {
+                          Route::prefix('car')->middleware('verified')->group(function() {
 
                           Route::get('home', [CarController::class,'index'])->name('cars.index');
                           Route::get('add', [CarController::class,'create'])->name('cars.add');
@@ -73,11 +78,17 @@ Route::get('/profile', function () {
 
 
                         });
-                          #Route::resources('cars', [CarController::class]);
-                          */
 
 
-                          
+
+
+
+
+                        });
+*/
+
+
+
 #<!------classes-------¡>
 Route::group([
     'prefix' => 'classes', #for the uri

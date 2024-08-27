@@ -44,14 +44,21 @@ class CarController extends Controller
     //dd($request);
 
 #validation:
+/*$message = ['carTitle.required' => __('cars.carTitle'),
+'description.required' => __('cars.required'),
+'price.required' => __('cars.required'),
+'image.required' => __('cars.image'),
+'catID.required' => __('cars.required'),
+    ];*/
+
 $data = $request->validate([
-    'carTitle' => "required|string",
+    'carTitle' => "required|string", 
     'description' => "required|string|max:1000",
     'price' => "required|decimal:1",
 
     'image' => "required|mimes:png,jpg,jpeg|max:2048",
     'catID' => "required|exists:cats,id",
-]);
+]); #,$message);
 
 $data['pub'] = isset($request->pub);
 $data['image'] = $this->uploadFile($request->image,"assets/images");

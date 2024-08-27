@@ -20,6 +20,7 @@ class CarFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
         return [
@@ -33,3 +34,7 @@ class CarFactory extends Factory
         ];
         }
 }
+//insert into `testimonials`
+//(`name`, `profession`, `description`, `pub`, `image`, `updated_at`, `created_at`)
+//values
+//('Kurtis', 'Quasi exercitationem quae sapiente ratione. Tempore qui minima qui est enim possimus est ipsa. Autem omnis molestiae impedit enim. Et voluptatem corrupti voluptatem repellendus autem voluptatem.', 'Amet laborum et quas. Est sapiente suscipit tenetur quia veniam atque sint. Hic perspiciatis eius mollitia asperiores.', 1, 'carousel-2.jpg', '2024-08-22 21:36:53', '2024-08-22 21:36:53')

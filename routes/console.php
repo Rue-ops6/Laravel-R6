@@ -12,6 +12,6 @@ Artisan::command('inspire', function () {
 
 
 /* Mailtrap have a limit of 100 msg only
-Schedule::command('signature:mailable')->everyFourHours();#command signiture then run it w/ schedule work  */
-Schedule::command('signature:expiration')->everyMinute();#command signiture then run it w/ schedule work
-
+Schedule::command('appsig:mailable')->everyFourHours();#command signiture then run it w/ schedule work  */
+Schedule::command('appsig:expiration')->everyMinute();#command signiture then run it w/ schedule work
+schedule::command('appsig:backupDB')->daily();

@@ -12,7 +12,7 @@ class ExpirationCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'signature:expiration';
+    protected $signature = 'appsig:expiration';
 
     /**
      * The console command description.

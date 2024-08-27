@@ -42,6 +42,7 @@ class BackupDatabase extends Command
             $this->info('Backup successfully created: ' . $backupFile);
         } else {
             $this->error('Backup failed.');
+            
         }
     }
 }

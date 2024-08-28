@@ -21,6 +21,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'mobile',
+        'github_id',
+        'github_token',
+        'github_refresh_token',
     ];
 
     /**

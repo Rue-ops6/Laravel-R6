@@ -4,7 +4,9 @@ use App\Http\Controllers\ClassController; #the brain where to put the actions. W
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\SocialControllar;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 // require base_path('routes/cars.php'); #for cars other web route
 
 Route::get('/', function () { #main page
@@ -126,6 +128,9 @@ Route::get('one2one', [ExampleController::class, 'DBrelations'])->name('1-1')->m
 Route::get('contactus', [ContactController::class, 'sendFrom'])->name('sendFrom');
 Route::post('contactus', [ContactController::class, 'sendTo'])->name('sendTo');
 
+#<!------Socialmedia login-------¡>
+Route::get('auth/github/redirect', [SocialControllar::class, 'redirect'])->name('sociallogin');;
+Route::get('auth/github/callback', [SocialControllar::class, 'callback'])->name('callback');;
 
 
 #<!------Authantication  &&  Middleware-------¡>

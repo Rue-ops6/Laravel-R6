@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Faker\Core\File;
 use Illuminate\Console\Command;
 
 class BackupDatabase extends Command
@@ -32,7 +33,19 @@ class BackupDatabase extends Command
         $port = env('DB_PORT', '3306');
 
         $date = now()->format('Y-m-d_H-i-s');
-        $backupFile = "backup/{$databaseName}_{$date}.sql";
+        $backupFile = "backups/{$databaseName}_{$date}.sql";
+
+
+/*ensure "backups" directory exists in storage
+        if (!file_exists(storage_path('backups'))) {
+            File::makeDirectory($backups, 0755, true);
+        }
+
+//path instead in enviroment varibles
+$mysqldump = 'D:\\xampp\\mysql\\bin\\mysqldump.exe';
+
+
+*/
 
         $command = "mysqldump --user={$username} --password={$password} --host={$host} --port={$port} {$databaseName} > " . storage_path($backupFile);  # Builds the command string to execute mysqldump with the specified options, redirecting the output to the backup file in the storage directory.
 
@@ -42,6 +55,7 @@ class BackupDatabase extends Command
             $this->info('Backup successfully created: ' . $backupFile);
         } else {
             $this->error('Backup failed.');
+
         }
     }
 }

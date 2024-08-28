@@ -32,7 +32,7 @@ class BackupDatabase extends Command
         $port = env('DB_PORT', '3306');
 
         $date = now()->format('Y-m-d_H-i-s');
-        $backupFile = "backup/{$databaseName}_{$date}.sql";
+        $backupFile = "backups/{$databaseName}_{$date}.sql";
 
         $command = "mysqldump --user={$username} --password={$password} --host={$host} --port={$port} {$databaseName} > " . storage_path($backupFile);  # Builds the command string to execute mysqldump with the specified options, redirecting the output to the backup file in the storage directory.
 
@@ -42,7 +42,7 @@ class BackupDatabase extends Command
             $this->info('Backup successfully created: ' . $backupFile);
         } else {
             $this->error('Backup failed.');
-            
+
         }
     }
 }
